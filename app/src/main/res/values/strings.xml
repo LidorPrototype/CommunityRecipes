@@ -4,11 +4,9 @@
     <string name="my_name_and_id">Lidor Eliyahu Shelef\n206074437</string>
     <string name="loading_categories_error">We had some error getting the data, please restart the application</string>
     <string name="recipes_categories"><u>Recipes Categories</u></string>
-    <string name="submit_recipe"><u>Submit A Recipe</u></string>
+    <string name="submit_recipe"><u>Submit Recipe</u></string>
     <string name="featured_recipe_placeholder">Featured Recipe Placeholder</string>
     <string name="_error_">ERROR:\n</string>
-    <string name="preparation">Preparation:</string>
-    <string name="ingredients">Ingredients:</string>
     <string name="upload_recipe_image">Upload Recipe Image</string>
     <string name="loading">Loading…</string>
     <string name="apply_configurations">Apply Configurations</string>
@@ -36,4 +34,22 @@
     <string name="got_it">Got It!</string>
     <string name="enter_preparation">Enter A Preparation</string>
     <string name="enter">Enter</string>
+    <string name="recipe_image">Recipe Image</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="insert_name_here">Insert name here</string>
+    <string name="recipe_time">Recipe Time</string>
+    <string name="hours">hours:</string>
+    <string name="minutes">minutes:</string>
+    <string name="preparations">Preparations:</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="ingredients_example">Example: Green Beans 300g, Garlic 1tbs, Carrots 2 chopped</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="discard">Discard</string>
+    <string name="l_es_logo">L-ES logo</string>
+    <string name="minutes_raw">minutes</string>
+    <string name="minutes_example">45</string>
+    <string name="hours_raw">hours</string>
+    <string name="hours_example">02</string>
+    <string name="average_time">Average Time:</string>
 </resources>

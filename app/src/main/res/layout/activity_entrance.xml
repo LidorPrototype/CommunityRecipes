@@ -22,7 +22,8 @@
             android:src="@drawable/l_es"
             android:layout_width="35sp"
             android:layout_height="35sp"
-            android:layout_margin="10sp"/>
+            android:layout_margin="10sp"
+            android:contentDescription="@string/l_es_logo" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -65,9 +66,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="right"
+                        android:gravity="end"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        tools:ignore="UselessParent">
 
                         <com.airbnb.lottie.LottieAnimationView
                             android:layout_width="0dp"
@@ -76,7 +78,8 @@
                             android:rotation="-45"
                             app:lottie_autoPlay="true"
                             app:lottie_loop="true"
-                            app:lottie_rawRes="@raw/wok_pan" />
+                            app:lottie_rawRes="@raw/wok_pan"
+                            tools:ignore="NestedWeights" />
 
                     </LinearLayout>
 

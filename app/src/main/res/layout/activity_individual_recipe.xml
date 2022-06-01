@@ -19,7 +19,8 @@
         android:layout_height="0dp"
         android:layout_weight="35"
         android:scaleType="fitXY"
-        android:src="@drawable/general_food"/>
+        android:src="@drawable/general_food"
+        android:contentDescription="@string/recipe_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Average Time:"
+            android:text="@string/average_time"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="75sp"
@@ -41,7 +42,7 @@
             android:gravity="center"
             android:layout_weight="4"
             android:textColor="@color/neu_text_color"
-            />
+            tools:ignore="NestedWeights" />
 
         <TextView
             android:layout_width="0dp"
@@ -56,7 +57,7 @@
             android:id="@+id/text_view_avg_hours"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="01"
+            android:text="@string/hours_example"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="20sp"
@@ -69,7 +70,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="hours"
+            android:text="@string/hours_raw"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="20sp"
@@ -83,7 +84,7 @@
             android:id="@+id/text_view_avg_minutes"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="45"
+            android:text="@string/minutes_example"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="20sp"
@@ -96,7 +97,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="minutes"
+            android:text="@string/minutes_raw"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="20sp"
@@ -128,7 +129,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="@string/preparation"
+                android:text="@string/preparations"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="12sp"
                 android:autoSizeMaxTextSize="75sp"

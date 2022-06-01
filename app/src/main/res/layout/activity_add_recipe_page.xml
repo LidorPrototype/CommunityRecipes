@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Recipe Image"
+                android:text="@string/recipe_image"
                 android:textColor="@color/neu_text_color"
                 android:gravity="center_vertical"
                 android:layout_weight="0.5" />
@@ -46,7 +46,8 @@
                 android:layout_width="0sp"
                 android:layout_height="match_parent"
                 android:src="@drawable/general_food"
-                android:layout_weight="0.5"/>
+                android:layout_weight="0.5"
+                android:contentDescription="@string/recipe_image" />
 
             <soup.neumorphism.NeumorphButton
                 android:id="@+id/button_upload_image"
@@ -74,7 +75,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Recipe Image"
+                android:text="@string/recipe_name"
                 android:textColor="@color/neu_text_color"
                 android:gravity="center_vertical"
                 android:layout_weight="0.5"/>
@@ -83,12 +84,14 @@
                 android:id="@+id/edit_text_recipe_name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:hint="Recipe Name"
                 android:maxLines="1"
                 android:textColor="@color/neu_text_color"
                 android:textColorHint="@color/neu_text_color"
                 android:layout_weight="1.5"
-                app:backgroundTint="@color/black"/>
+                android:hint="@string/insert_name_here"
+                app:backgroundTint="@color/black"
+                android:autofillHints="name"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -106,7 +109,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Recipe Time"
+                android:text="@string/recipe_time"
                 android:textColor="@color/neu_text_color"
                 android:gravity="center_vertical"
                 android:layout_weight="0.5"/>
@@ -120,7 +123,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="hours:"
+                    android:text="@string/hours"
                     android:gravity="center"
                     android:textColor="@color/neu_text_color"
                     android:layout_weight="1"/>
@@ -137,7 +140,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="minutes:"
+                    android:text="@string/minutes"
                     android:gravity="center"
                     android:textColor="@color/neu_text_color"
                     android:layout_weight="1"/>
@@ -173,7 +176,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Preparations:"
+                    android:text="@string/preparations"
                     android:textColor="@color/neu_text_color"
                     android:gravity="center_vertical"
                     android:layout_weight="0.5"/>
@@ -192,7 +195,9 @@
                         android:textColorHint="@color/neu_text_color"
                         android:textColor="@color/neu_text_color"
                         android:hint="@string/enter_preparation"
-                        android:layout_weight="2"/>
+                        android:layout_weight="2"
+                        android:autofillHints="name"
+                        android:inputType="text" />
 
                     <Button
                         android:id="@+id/button_preparation_add"
@@ -232,7 +237,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Ingredients:"
+                    android:text="@string/ingredients"
                     android:textColor="@color/neu_text_color"
                     android:gravity="center_vertical"
                     android:layout_weight="0.5"/>
@@ -244,7 +249,7 @@
                     android:textColor="@color/neu_text_color"
                     android:autoSizeTextType="uniform"
                     android:lines="1"
-                    android:text="Example: Green Beans 300g, Garlic 1tbs, Carrots 2 chopped"
+                    android:text="@string/ingredients_example"
                     android:layout_weight="1.5"/>
 
             </LinearLayout>
@@ -261,8 +266,10 @@
                     android:backgroundTint="@color/neu_text_color"
                     android:textColorHint="@color/neu_text_color"
                     android:textColor="@color/neu_text_color"
-                    android:hint="Name"
-                    android:layout_weight="1.35"/>
+                    android:hint="@string/name"
+                    android:layout_weight="1.35"
+                    android:autofillHints="name"
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/edit_text_add_ingredient_amount"
@@ -271,8 +278,10 @@
                     android:backgroundTint="@color/neu_text_color"
                     android:textColorHint="@color/neu_text_color"
                     android:textColor="@color/neu_text_color"
-                    android:hint="Amount"
-                    android:layout_weight="1.35"/>
+                    android:hint="@string/amount"
+                    android:layout_weight="1.35"
+                    android:autofillHints="name"
+                    android:inputType="text" />
 
                 <Button
                     android:id="@+id/button_ingredient_add"
@@ -315,7 +324,7 @@
                 android:layout_width="0sp"
                 android:layout_height="match_parent"
                 android:layout_margin="5sp"
-                android:text="Discard"
+                android:text="@string/discard"
                 android:gravity="center"
                 android:textColor="@color/neu_text_color"
                 android:textAllCaps="false"
@@ -326,7 +335,7 @@
                 android:layout_width="0sp"
                 android:layout_height="match_parent"
                 android:layout_margin="5sp"
-                android:text="Submit Recipe"
+                android:text="@string/submit_recipe"
                 android:gravity="center"
                 android:textColor="@color/neu_text_color"
                 android:textAllCaps="false"
