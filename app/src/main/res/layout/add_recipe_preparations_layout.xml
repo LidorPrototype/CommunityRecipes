@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="35sp"
+    android:padding="6sp"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/text_view_preparation_level"
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:autoSizeTextType="uniform"
+        android:textColor="@color/neu_text_color"
+        android:gravity="center"
+        android:text=">"
+        android:layout_weight="0.5"/>
+
+    <TextView
+        android:id="@+id/text_view_preparation_text"
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:autoSizeTextType="uniform"
+        android:textColorHint="@color/neu_text_color"
+        android:textColor="@color/neu_text_color"
+        android:hint="Insert Preparation. . ."
+        android:layout_weight="8.5"
+        app:backgroundTint="@color/black"/>
+
+    <ImageView
+        android:id="@+id/image_view_remove_preparation"
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:src="@drawable/remove"
+        android:layout_weight="1"/>
+
+</LinearLayout>

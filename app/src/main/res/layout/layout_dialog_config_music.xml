@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="6sp"
+    app:cardCornerRadius="24sp"
+    app:cardBackgroundColor="@color/neu_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.l_es.communityrecipes.CustomSpinner
+            android:id="@+id/spinner_choose_default_song"
+            android:layout_width="match_parent"
+            android:layout_height="35sp"
+            android:dropDownVerticalOffset="40sp"
+            android:spinnerMode="dropdown"
+            android:layout_margin="12sp"
+            android:background="@drawable/bg_spinner_music_down"
+            android:popupBackground="@drawable/bg_spinner_music_dropdown"
+            />
+
+        <soup.neumorphism.NeumorphButton
+            android:id="@+id/neumorphic_music_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:neumorph_shapeType="flat"
+            android:gravity="center"
+            android:text="@string/music_not_playing"
+            android:textColor="@color/neu_text_color"
+            android:padding="24sp"
+            android:textSize="24sp"/>
+
+        <Button
+            android:id="@+id/button_music_dialog_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_configurations"
+            android:layout_marginStart="24sp"
+            android:layout_marginEnd="24sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

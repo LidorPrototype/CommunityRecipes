@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="6sp"
+    app:cardCornerRadius="24sp"
+    app:cardBackgroundColor="@color/neu_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cook Reminder"
+                android:textColor="@color/neu_text_color"
+                android:autoSizeTextType="uniform"
+                android:lines="1"
+                android:gravity="center"
+                android:padding="4sp"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_cook_reminder_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_notifications_dialog_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_configurations"
+            android:layout_marginStart="24sp"
+            android:layout_marginEnd="24sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

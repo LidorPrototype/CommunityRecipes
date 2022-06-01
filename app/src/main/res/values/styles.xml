@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="roundedCornersImageView" parent="Theme.CommunityRecipes">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32sp</item>
+    </style>
+    <style name="DefaultNumberPickerTheme" parent="Theme.CommunityRecipes">
+        <item name="android:textColorPrimary">@color/neu_text_color</item>
+    </style>
+    <style name="ActionOptionsMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/menu_shape</item>
+    </style>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="35sp"
+    android:padding="2sp">
+
+    <TextView
+        android:id="@+id/text_view_song_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:textColor="@color/neu_text_color"
+        android:layout_marginEnd="24sp"
+        android:layout_marginStart="4sp"
+        android:lines="1"
+        android:text="Song Name"
+        />
+
+</LinearLayout>

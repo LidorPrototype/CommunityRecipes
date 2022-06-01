@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/neu_bg"
+    tools:context=".IndividualRecipeActivity">
+
+    <include
+        android:id="@+id/toolbar_individual_recipe"
+        layout="@layout/recipe_toolbar_layout"/>
+
+    <ImageView
+        android:id="@+id/imageViewRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:scaleType="fitXY"
+        android:src="@drawable/general_food"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:weightSum="10.5"
+        android:orientation="horizontal"
+        android:layout_marginStart="2sp"
+        android:layout_marginEnd="2sp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Average Time:"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="75sp"
+            android:lines="1"
+            android:gravity="center"
+            android:layout_weight="4"
+            android:textColor="@color/neu_text_color"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:lines="1"
+            android:textColor="@color/neu_text_color"
+            android:gravity="center"
+            android:layout_weight="0.4"
+            />
+
+        <TextView
+            android:id="@+id/text_view_avg_hours"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="01"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:lines="1"
+            android:textColor="@color/neu_text_color"
+            android:gravity="center"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="hours"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:textColor="@color/neu_text_color"
+            android:lines="1"
+            android:gravity="center_vertical"
+            android:layout_weight="1.6"
+            />
+
+        <TextView
+            android:id="@+id/text_view_avg_minutes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="45"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:lines="1"
+            android:gravity="center"
+            android:textColor="@color/neu_text_color"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="minutes"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:textColor="@color/neu_text_color"
+            android:lines="1"
+            android:gravity="center_vertical"
+            android:layout_weight="2.4"
+            />
+
+    </LinearLayout>
+
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="35"
+        android:padding="18sp"
+        app:cardBackgroundColor="@color/neu_bg"
+        app:neumorph_shadowElevation="3dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPreparation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10"
+            android:layout_margin="3sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/preparation"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="75sp"
+                android:lines="1"
+                android:textColor="@color/neu_text_color"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_individual_recipe_preparation"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_margin="5sp"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="9"
+                />
+
+        </LinearLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="25"
+        android:padding="18sp"
+        app:cardBackgroundColor="@color/neu_bg"
+        app:neumorph_shadowElevation="3dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="3sp"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/ingredients"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="75sp"
+                android:lines="1"
+                android:textColor="@color/neu_text_color"
+                android:gravity="center_vertical"
+                android:layout_weight="2"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_individual_recipe_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_margin="5sp"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="8"
+                />
+
+        </LinearLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+</LinearLayout>

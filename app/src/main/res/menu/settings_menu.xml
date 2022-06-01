@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item android:id="@+id/item_add_recipe"
+        android:title="Add A Recipe"
+        android:icon="@drawable/add_24"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/item_login_or_register"
+        android:title="@string/login_or_register"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/item_settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/item_about"
+        android:title="About"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/item_exit"
+        android:title="Exit"
+        app:showAsAction="never"/>
+
+</menu>
