@@ -52,4 +52,19 @@
     <string name="hours_raw">hours</string>
     <string name="hours_example">02</string>
     <string name="average_time">Average Time:</string>
+    <string name="featured_recipe">Featured Recipe</string>
+    <string name="music_image">Music Image</string>
+    <string name="credits_image">Credits Image</string>
+    <string name="credits">Credits</string>
+    <string name="name_semicolon">Name:</string>
+    <string name="amount_semicolon">Amount:</string>
+    <string name="listview_iem_symbol"><![CDATA[>]]></string>
+    <string name="remove_image">Remove Image</string>
+    <string name="cook_reminder">Cook Reminder</string>
+    <string name="dislike_image">Dislike Image</string>
+    <string name="like_image">Like Recipe</string>
+    <string name="song_name">Song Name</string>
+    <string name="retake_photo">Retake Photo</string>
+    <string name="good_photo">Good Photo</string>
+    <string name="_1">1</string>
 </resources>

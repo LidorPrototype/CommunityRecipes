@@ -15,7 +15,7 @@
         android:layout_marginEnd="24sp"
         android:layout_marginStart="4sp"
         android:lines="1"
-        android:text="Song Name"
+        android:text="@string/song_name"
         />
 
 </LinearLayout>

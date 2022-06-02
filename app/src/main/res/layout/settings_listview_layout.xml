@@ -14,7 +14,8 @@
         android:layout_height="50sp"
         android:padding="12sp"
         android:scaleType="fitXY"
-        android:src="@drawable/l_es" />
+        android:src="@drawable/l_es"
+        android:contentDescription="@string/l_es_logo" />
 
     <TextView
         android:id="@+id/text_view_settings_name"

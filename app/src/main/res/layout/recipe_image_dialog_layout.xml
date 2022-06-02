@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +9,8 @@
     android:minWidth="250sp"
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0sp"
-    app:cardCornerRadius="32sp">
+    app:cardCornerRadius="32sp"
+    tools:ignore="UselessParent">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:weightSum="2"
             android:gravity="end"
+            android:baselineAligned="false"
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:layout_marginTop="3sp"
@@ -39,13 +42,13 @@
                 android:layout_height="wrap_content"
                 android:weightSum="2"
                 android:layout_weight="1.35"
-                >
+                tools:ignore="NestedWeights">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_retake_photo"
                     android:layout_width="0sp"
                     android:layout_height="wrap_content"
-                    android:text="Retake Photo"
+                    android:text="@string/retake_photo"
                     android:textColor="@color/neu_text_color"
                     android:minHeight="35sp"
                     android:maxLines="1"
@@ -54,13 +57,13 @@
                     android:textAllCaps="false"
                     android:background="@drawable/dialog_btn_bg"
                     android:layout_weight="1"
-                    android:layout_margin="2sp"/>
+                    android:layout_margin="2sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_good_photo"
                     android:layout_width="0sp"
                     android:layout_height="wrap_content"
-                    android:text="Good Photo"
+                    android:text="@string/good_photo"
                     android:textColor="@color/neu_text_color"
                     android:minHeight="35sp"
                     android:maxLines="1"

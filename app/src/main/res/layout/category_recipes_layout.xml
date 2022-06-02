@@ -28,7 +28,7 @@
             android:adjustViewBounds="true"
             android:src="@drawable/general_food"
             android:layout_weight="7"
-            />
+            android:contentDescription="@string/recipe_image" />
 
         <TextView
             android:id="@+id/text_view_category_recipes_name"

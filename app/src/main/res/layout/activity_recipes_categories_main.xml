@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="100sp"
             android:src="@drawable/l_es"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/featured_recipe" />
 
         <LinearLayout
             android:layout_width="match_parent"
