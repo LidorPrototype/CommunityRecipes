@@ -152,7 +152,7 @@ public class MainRecipesCategoriesActivity extends AppCompatActivity {
 
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_recipes_categories);
-        toolbar.setTitle("Recipes Categories");
+        toolbar.setTitle(getResources().getString(R.string.recipes_categories));
         setSupportActionBar(toolbar);
     }
 

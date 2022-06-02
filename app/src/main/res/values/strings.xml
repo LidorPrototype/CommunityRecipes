@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">CommunityRecipes</string>
-    <string name="app_title"><u>Community Recipes</u></string>
-    <string name="my_name_and_id">Lidor Eliyahu Shelef\n206074437</string>
+    <string name="app_title" translatable="false"><u>Community Recipes</u></string>
+    <string name="my_name_and_id">Lidor Eliyahu Shelef, 206074437</string>
     <string name="loading_categories_error">We had some error getting the data, please restart the application</string>
     <string name="recipes_categories"><u>Recipes Categories</u></string>
     <string name="submit_recipe"><u>Submit Recipe</u></string>
-    <string name="featured_recipe_placeholder">Featured Recipe Placeholder</string>
-    <string name="_error_">ERROR:\n</string>
+    <string name="featured_recipe_placeholder" translatable="false">Featured Recipe Placeholder</string>
+    <string name="_error_" translatable="false">ERROR:\t</string>
     <string name="upload_recipe_image">Upload Recipe Image</string>
     <string name="loading">Loading…</string>
     <string name="apply_configurations">Apply Configurations</string>
@@ -17,10 +17,8 @@
     <string name="settings">Settings</string>
     <string name="like_recipe"><b><u>Like Recipe</u></b></string>
     <string name="dislike_recipe"><b><u>Dislike Recipe</u></b></string>
-    <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -46,25 +44,50 @@
     <string name="name">Name</string>
     <string name="amount">Amount</string>
     <string name="discard">Discard</string>
-    <string name="l_es_logo">L-ES logo</string>
+    <string name="l_es_logo" translatable="false">L-ES logo</string>
     <string name="minutes_raw">minutes</string>
-    <string name="minutes_example">45</string>
+    <string name="minutes_example" translatable="false">45</string>
     <string name="hours_raw">hours</string>
-    <string name="hours_example">02</string>
+    <string name="hours_example" translatable="false">02</string>
     <string name="average_time">Average Time:</string>
     <string name="featured_recipe">Featured Recipe</string>
-    <string name="music_image">Music Image</string>
-    <string name="credits_image">Credits Image</string>
+    <string name="music_image" translatable="false">Music Image</string>
+    <string name="credits_image" translatable="false">Credits Image</string>
     <string name="credits">Credits</string>
     <string name="name_semicolon">Name:</string>
     <string name="amount_semicolon">Amount:</string>
-    <string name="listview_iem_symbol"><![CDATA[>]]></string>
     <string name="remove_image">Remove Image</string>
     <string name="cook_reminder">Cook Reminder</string>
-    <string name="dislike_image">Dislike Image</string>
-    <string name="like_image">Like Recipe</string>
+    <string name="dislike_image" translatable="false">Dislike Image</string>
+    <string name="like_image" translatable="false">Like Recipe</string>
     <string name="song_name">Song Name</string>
     <string name="retake_photo">Retake Photo</string>
     <string name="good_photo">Good Photo</string>
-    <string name="_1">1</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="listview_iem_symbol"><![CDATA[>]]></string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="pay_us">Pay Us First Matey ;)</string>
+    <string name="signed_out">Signed out</string>
+    <string name="email_exception">There is no email client installed mate !</string>
+    <string name="login_fail_msg">Something has failed, please try again later…</string>
+    <string name="login_already_logged_in_msg">You are already logged in mate !</string>
+    <string name="authentication_failed">Authentication failed.</string>
+    <string name="email_in_use_msg">Email is already in use, try again mate…</string>
+    <string name="recipe_image_load_fail_msg">Unable to read recipe image, please try again later mate ;)</string>
+    <string name="validation_warning_recipe_name">Please provide the name of the recipe mate!</string>
+    <string name="validation_warning_avg_time">Please provide the time it takes to prepare this recipe mate!</string>
+    <string name="validation_warning_preparations">Please Provide at least one preparation mate!</string>
+    <string name="validation_warning_ingredients">Please Provide at least one ingredient mate!</string>
+    <string name="upload_success">Upload Success :)</string>
+    <string name="upload_failed">Upload Failed, Please try again later. . .</string>
+    <string name="recipe_created">Recipe Created !</string>
+    <string name="recipe_creation_failed">Recipe Creation Failed !</string>
+    <string name="get_featured">Get Featured</string>
+    <string name="notifications">Notifications</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="check_other_apps">Check Other Apps</string>
+    <string name="logout">Logout</string>
+    <string name="rate_updated">Rates Updated !</string>
+    <string name="rate_update_fail">Update Failed, Please try again later.</string>
 </resources>

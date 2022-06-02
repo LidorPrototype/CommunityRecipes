@@ -47,18 +47,6 @@ public class RVAddRecipeIngredientsAdapter extends RecyclerView.Adapter<RVAddRec
             super(itemView);
             ingredients_name = itemView.findViewById(R.id.text_view_ingredient_name);
             ingredients_amount = itemView.findViewById(R.id.text_view_ingredient_amount);
-
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if(_listener != null){
-//                        int position = getBindingAdapterPosition();
-//                        if(position != RecyclerView.NO_POSITION){
-//                            _listener.onItemClick(position);
-//                        }
-//                    }
-//                }
-//            });
         }
     }
 
@@ -68,11 +56,6 @@ public class RVAddRecipeIngredientsAdapter extends RecyclerView.Adapter<RVAddRec
         this.ingredients_amounts = _ingredients_amounts;
         this.ingredients = IntStream.range(0,this.ingredients_names.size()).boxed()
                         .collect(Collectors.toMap(this.ingredients_names::get, this.ingredients_amounts::get));
-//        Old way was:
-//        - this.ingredients =
-//        -         IntStream.range(0,_ingredients_names.size())
-//        -                 .boxed()
-//        -                 .collect(Collectors.toMap(i -> _ingredients_names.get(i), i -> _ingredients_amounts.get(i)));
         this.recipeInflater = LayoutInflater.from(this.context);
     }
 

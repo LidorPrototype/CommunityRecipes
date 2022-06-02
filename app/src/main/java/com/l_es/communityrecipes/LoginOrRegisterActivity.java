@@ -80,7 +80,7 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(LoginOrRegisterActivity.this, "Email is already in use, try again mate...",
+                                Toast.makeText(LoginOrRegisterActivity.this, getResources().getString(R.string.email_in_use_msg),
                                         Toast.LENGTH_SHORT).show();
                             }else{
                                 updateUI(null);
@@ -103,7 +103,7 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(Utilities.LOG_FLAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginOrRegisterActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginOrRegisterActivity.this, getResources().getString(R.string.authentication_failed),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -113,9 +113,9 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user_){
         if (user_ == null){
-            Toast.makeText(this, "Something has failed, please try again later...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.login_fail_msg), Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "You are already logged in mate !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.login_already_logged_in_msg), Toast.LENGTH_SHORT).show();
             onBackPressed();
         }
     }
@@ -129,7 +129,7 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
 
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_login_or_register);
-        toolbar.setTitle("Login or Register");
+        toolbar.setTitle(getResources().getString(R.string.login_or_register));
         setSupportActionBar(toolbar);
         try {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

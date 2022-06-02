@@ -73,15 +73,15 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
         settings_icons.add(R.drawable.expand);
         settings_icons.add(R.drawable.logout);
         settings_names = new ArrayList<String>();
-        settings_names.add("Get Featured");         //  0
-        settings_names.add("Notifications");        //  1
-        settings_names.add("Add A Recipe");         //  2
-        settings_names.add("Rate Us");              //  3
-        settings_names.add("Check Other Apps");     //  4
+        settings_names.add(getResources().getString(R.string.get_featured));         //  0
+        settings_names.add(getResources().getString(R.string.notifications));        //  1
+        settings_names.add(getResources().getString(R.string.add_a_recipe));         //  2
+        settings_names.add(getResources().getString(R.string.rate_us));              //  3
+        settings_names.add(getResources().getString(R.string.check_other_apps));     //  4
         if (user != null) {
-            settings_names.add("Logout");           //  5
+            settings_names.add(getResources().getString(R.string.logout));           //  5
         }else{
-            settings_names.add("Login");            //  5
+            settings_names.add(getResources().getString(R.string.login));            //  5
         }
         lvSettingsAdapter = new LVSettingsAdapter(this, settings_icons, settings_names);
         listViewSettings.setAdapter(lvSettingsAdapter);
@@ -93,7 +93,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position){
                     case 0: // Get Featured
-                        Toast.makeText(SettingsActivity.this, "Pay Us First Matey !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingsActivity.this, getResources().getString(R.string.pay_us), Toast.LENGTH_SHORT).show();
                         sendEmail();
                         break;
                     case 1: // Notifications
@@ -115,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
                     case 5:
                         if (user != null){
                             FirebaseAuth.getInstance().signOut();
-                            Toast.makeText(context, "Signed out", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, getResources().getString(R.string.signed_out), Toast.LENGTH_SHORT).show();
                             Intent intent_signed_out = new Intent(SettingsActivity.this, MainRecipesCategoriesActivity.class);
                             startActivity(intent_signed_out);
                         }else{
@@ -149,7 +149,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
 
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_settings);
-        toolbar.setTitle("Settings");
+        toolbar.setTitle(getResources().getString(R.string.settings));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -162,7 +162,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
 
     private void openCreditsDialog(){
         CreditsDialog creditsDialog = new CreditsDialog();
-        creditsDialog.show(getSupportFragmentManager(), "music config dialog");
+        creditsDialog.show(getSupportFragmentManager(), "credits dialog");
     }
 
     private void openMusicConfigDialog() {
@@ -194,8 +194,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
             Utilities.useBungee(this, LoginOrRegisterActivity.class, Utilities.ANIMATION_FADE, false);
             finish();
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(SettingsActivity.this,
-                    "There is no email client installed mate.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SettingsActivity.this, getResources().getString(R.string.email_exception), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -220,15 +220,14 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getContext(), "Rates Updated !", Toast.LENGTH_SHORT).show();
-//                        endAnimations();
+                        Toast.makeText(getContext(), getResources().getString(R.string.rate_updated), Toast.LENGTH_SHORT).show();
                         dismiss();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), " Update Failed!\nPlease try again later.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.rate_update_fail), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -115,7 +115,7 @@ public class EntranceActivity extends AppCompatActivity {
                                     }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_OCCASION)){
                                         category_occasion.add(key);
                                     }else{
-                                        category_cuisine.add("ERROR: " + key);
+                                        category_cuisine.add(getResources().getString(R.string._error_) + key);
                                     }
                                 }
                             }

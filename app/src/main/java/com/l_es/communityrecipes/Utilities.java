@@ -215,13 +215,13 @@ public class Utilities {
     }
 
     public static void createAboutDialog(Activity activity) {
-        String title = "About";
-        String msg = activity.getResources().getString(R.string.my_name_and_id);;
+        String title = activity.getResources().getString(R.string.about);
+        String msg = activity.getResources().getString(R.string.my_name_and_id);
         msg += getInfoAboutDevice(activity);
         new AlertDialog.Builder(activity)
                 .setTitle(title)
                 .setMessage(msg)
-                .setPositiveButton("Got It", new DialogInterface.OnClickListener() {
+                .setPositiveButton(activity.getResources().getString(R.string.got_it), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

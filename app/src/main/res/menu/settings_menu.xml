@@ -5,7 +5,7 @@
     >
 
     <item android:id="@+id/item_add_recipe"
-        android:title="Add A Recipe"
+        android:title="@string/add_a_recipe"
         android:icon="@drawable/add_24"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
@@ -15,15 +15,15 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/item_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never"/>
 
     <item android:id="@+id/item_about"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="never"/>
 
     <item android:id="@+id/item_exit"
-        android:title="Exit"
+        android:title="@string/exit"
         app:showAsAction="never"/>
 
 </menu>

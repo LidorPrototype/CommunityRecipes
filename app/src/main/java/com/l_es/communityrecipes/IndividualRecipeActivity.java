@@ -70,7 +70,7 @@ public class IndividualRecipeActivity extends AppCompatActivity {
         getRecipeDataFromDB(category_type, recipe_type, recipe_name);
 
         if(recipe_image.equalsIgnoreCase(Utilities.NULL)){
-            Toast.makeText(context, "Unable to read recipe image, please try again later mate ;)", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, getResources().getString(R.string.recipe_image_load_fail_msg), Toast.LENGTH_LONG).show();
         }else{
             Glide.with(context).load(Uri.parse(recipe_image)).into(imageViewRecipe);
         }

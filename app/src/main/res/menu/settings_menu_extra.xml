@@ -24,11 +24,11 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/item_about"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="never"/>
 
     <item android:id="@+id/item_exit"
-        android:title="Exit"
+        android:title="@string/exit"
         app:showAsAction="never"/>
 
 </menu>
