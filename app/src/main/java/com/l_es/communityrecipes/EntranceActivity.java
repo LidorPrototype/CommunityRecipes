@@ -108,14 +108,13 @@ public class EntranceActivity extends AppCompatActivity {
                                 for (Map.Entry<String, Object> entry : document.getData().entrySet()) {
                                     String key = entry.getKey();
                                     String value = entry.getValue().toString();
+                                    String deviceLanguage = Utilities.getDeviceLanguage();
                                     if (_id.equalsIgnoreCase(Utilities.CATEGORY_CUISINE)){
                                         category_cuisine.add(key);
                                     }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_MEAL)){
                                         category_meal.add(key);
                                     }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_OCCASION)){
                                         category_occasion.add(key);
-                                    }else{
-                                        category_cuisine.add(getResources().getString(R.string._error_) + key);
                                     }
                                 }
                             }

@@ -158,9 +158,13 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         category_cuisine = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_CUISINE, new HashSet<String>()));
         category_meal = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_MEAL, new HashSet<String>()));
         category_occasion = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_OCCASION, new HashSet<String>()));
-        categories.addAll(category_cuisine);
-        categories.addAll(category_meal);
-        categories.addAll(category_occasion);
+        List<String> categories_raw = new ArrayList<String>();
+        categories_raw.addAll(category_cuisine);
+        categories_raw.addAll(category_meal);
+        categories_raw.addAll(category_occasion);
+        for (String raw_word : categories_raw) {
+            categories.add(Translations.translateCategoryHelper(raw_word, false));
+        }
     }
 
     public static void removePreparation(int remove) {
@@ -325,7 +329,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
                         recipe_preparations.add(rvAddRecipePreparationAdapter.getItemAt(i));
                     }
                     Map<String, String> recipe_ingredients = rvAddRecipeIngredientsAdapter.getIngredients();
-                    selected_category_type = spinnerCategories.getSelectedItem().toString();
+                    selected_category_type = Translations.translateCategoryHelper(spinnerCategories.getSelectedItem().toString(), true);
                     general_recipe_type = getRecipeType(selected_category_type);
                     imageRef = storageRef.child(Utilities.IMAGES_PATH + recipe_name + " _ " + UUID.randomUUID() + ".jpg");
                     uploadStartEnd(0);
@@ -433,7 +437,9 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.recipe_created), Toast.LENGTH_SHORT).show();
+                        resetAllFields();
+                        Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_ZOOM, true);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.l_es.communityrecipes.R;
+import com.l_es.communityrecipes.Translations;
 
 import java.util.List;
 
@@ -79,7 +80,8 @@ public class RVCategoriesAdapter extends RecyclerView.Adapter<RVCategoriesAdapte
 
     @Override
     public void onBindViewHolder(CategoriesViewHolder holder, int position) {
-        holder.category_name.setText(categories.get(position));
+        String properLanguageCategory = Translations.translateFromEnglishCategory(categories.get(position));
+        holder.category_name.setText(properLanguageCategory);
     }
 
     @Override

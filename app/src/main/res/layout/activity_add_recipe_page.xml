@@ -317,7 +317,7 @@
                 android:layout_weight="1"
                 android:textColor="#000000"
                 android:backgroundTint="@color/neu_text_color"
-                android:spinnerMode="dropdown"/>
+                android:spinnerMode="dialog"/>
 
             <soup.neumorphism.NeumorphButton
                 android:id="@+id/button_discard"

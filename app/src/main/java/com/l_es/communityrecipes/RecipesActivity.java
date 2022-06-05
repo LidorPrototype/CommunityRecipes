@@ -165,7 +165,7 @@ public class RecipesActivity extends AppCompatActivity {
     }
 
     public void setUniqueToolBar(){
-        String test = category_type.toString() + " : " + recipe_type.toString();
+        String test = Utilities.getLanguageBasedCategory(category_type.toString()) + " : " + Translations.translateFromEnglishCategory(recipe_type.toString());
         Toolbar toolbar = findViewById(R.id.toolbar_recipes);
         toolbar.setTitle(test);
         setSupportActionBar(toolbar);

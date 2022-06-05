@@ -45,9 +45,7 @@ public class MainRecipesCategoriesActivity extends AppCompatActivity {
         category_meal = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_MEAL, new HashSet<String>()));
         category_occasion = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_OCCASION, new HashSet<String>()));
 
-        c_1.setText(Utilities.CATEGORY_CUISINE);
-        c_2.setText(Utilities.CATEGORY_MEAL);
-        c_3.setText(Utilities.CATEGORY_OCCASION);
+        setCategoryLanguageBased();
 
         rvCategoriesAdapterCuisine = new RVCategoriesAdapter(this, category_cuisine);
         rvCategoriesAdapterMeal = new RVCategoriesAdapter(this, category_meal);
@@ -56,6 +54,27 @@ public class MainRecipesCategoriesActivity extends AppCompatActivity {
         setOnClicks();
         setupRecyclerViews();
 
+    }
+
+    private void setCategoryLanguageBased() {
+        String deviceLanguage = Utilities.getDeviceLanguage();
+        switch (deviceLanguage) {
+            case Utilities.LANGUAGE_ENGLISH:
+                c_1.setText(Utilities.CATEGORY_CUISINE_ENGLISH);
+                c_2.setText(Utilities.CATEGORY_MEAL_ENGLISH);
+                c_3.setText(Utilities.CATEGORY_OCCASION_ENGLISH);
+                break;
+            case Utilities.LANGUAGE_HEBREW:
+                c_1.setText(Utilities.CATEGORY_CUISINE_HEBREW);
+                c_2.setText(Utilities.CATEGORY_MEAL_HEBREW);
+                c_3.setText(Utilities.CATEGORY_OCCASION_HEBREW);
+                break;
+            case Utilities.LANGUAGE_RUSSIAN:
+                c_1.setText(Utilities.CATEGORY_CUISINE_RUSSIAN);
+                c_2.setText(Utilities.CATEGORY_MEAL_RUSSIAN);
+                c_3.setText(Utilities.CATEGORY_OCCASION_RUSSIAN);
+                break;
+        }
     }
 
     private void setupRecyclerViews(){
@@ -111,10 +130,10 @@ public class MainRecipesCategoriesActivity extends AppCompatActivity {
 
     }
 
-    private void move_to_recipes_page(String _category, String _type) {
+    private void move_to_recipes_page(String _category_language, String _type) {
         SharedPreferences prefs = getSharedPreferences(Utilities.SP_RECIPES_TYPE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(Utilities.SP_RECIPES_TYPE, _category);
+        editor.putString(Utilities.SP_RECIPES_TYPE, _category_language);
         editor.putString(Utilities.SP_CATEGORY_TYPE, _type);
         editor.apply();
         Utilities.useBungee(this, RecipesActivity.class, Utilities.ANIMATION_FADE, true);
