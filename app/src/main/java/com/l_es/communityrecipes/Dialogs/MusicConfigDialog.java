@@ -43,10 +43,11 @@ import soup.neumorphism.ShapeType;
  * |  __|   _   |__  |
  * |____|  |_|  |____|
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class MusicConfigDialog extends AppCompatDialogFragment implements CustomSpinner.OnSpinnerEventsListener {
 
     private CustomSpinner spinnerSongs;
-    private List<String> songs_names = new ArrayList<>(Utilities.songs.keySet());
+    private final List<String> songs_names = new ArrayList<>(Utilities.songs.keySet());
     private NeumorphButton neumorphButtonMusicConfig;
     private MusicConfigDialogListener listener;
     private Button buttonOK;
@@ -59,7 +60,7 @@ public class MusicConfigDialog extends AppCompatDialogFragment implements Custom
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        LayoutInflater layoutInflater = requireActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.layout_dialog_config_music, null);
 
         builder.setView(view);
@@ -75,7 +76,7 @@ public class MusicConfigDialog extends AppCompatDialogFragment implements Custom
     }
 
     private void applyMusicStatusTexts() {
-        if(Utilities.isMyServiceRunning(SoundService.class, getActivity())){
+        if(Utilities.isMyServiceRunning(SoundService.class, requireActivity())){
             neumorphButtonMusicConfig.setShapeType(ShapeType.BASIN);
             neumorphButtonMusicConfig.setText(getResources().getString(R.string.music_playing));
         }else {
@@ -102,32 +103,27 @@ public class MusicConfigDialog extends AppCompatDialogFragment implements Custom
 
     private void setupOnClicks(){
         Intent musicIntent = new Intent(getActivity(), SoundService.class);
-        neumorphButtonMusicConfig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Utilities.isMyServiceRunning(SoundService.class, getActivity())){
-                    neumorphButtonMusicConfig.setShapeType(ShapeType.FLAT);
-                    neumorphButtonMusicConfig.setText(getResources().getString(R.string.music_not_playing));
-                    musicState = false;
-                    getActivity().stopService(musicIntent);
-                }else {
-                    neumorphButtonMusicConfig.setShapeType(ShapeType.BASIN);
-                    neumorphButtonMusicConfig.setText(getResources().getString(R.string.music_playing));
-                    musicState = true;
-                    listener.applyMusicConfig(musicState, getChosenSong());
-                    getActivity().startService(musicIntent);
-                }
+        neumorphButtonMusicConfig.setOnClickListener(view -> {
+            if(Utilities.isMyServiceRunning(SoundService.class, requireActivity())){
+                neumorphButtonMusicConfig.setShapeType(ShapeType.FLAT);
+                neumorphButtonMusicConfig.setText(getResources().getString(R.string.music_not_playing));
+                musicState = false;
+                requireActivity().stopService(musicIntent);
+            }else {
+                neumorphButtonMusicConfig.setShapeType(ShapeType.BASIN);
+                neumorphButtonMusicConfig.setText(getResources().getString(R.string.music_playing));
+                musicState = true;
+                listener.applyMusicConfig(musicState, getChosenSong());
+                requireActivity().startService(musicIntent);
             }
         });
-        buttonOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.applyMusicConfig(musicState, getChosenSong());
-                dismiss();
-            }
+        buttonOK.setOnClickListener(view -> {
+            listener.applyMusicConfig(musicState, getChosenSong());
+            dismiss();
         });
     }
 
+    @SuppressWarnings("ConstantConditions")
     private int getChosenSong() {
         String songName = spinnerSongs.getSelectedItem().toString();
         try {
@@ -144,7 +140,7 @@ public class MusicConfigDialog extends AppCompatDialogFragment implements Custom
         try {
             listener = (MusicConfigDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement MusicConfigDialogListener");
+            throw new ClassCastException(context + " must implement MusicConfigDialogListener");
         }
     }
 

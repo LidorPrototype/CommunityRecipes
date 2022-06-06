@@ -1,6 +1,5 @@
 package com.l_es.communityrecipes;
 
-import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +8,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.l_es.communityrecipes.Services.SoundService;
 
 import java.util.ArrayList;
@@ -25,14 +20,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class EntranceActivity extends AppCompatActivity {
 
     private Context context;
     private TextView textViewError;
-    private final List<String> category_cuisine = new ArrayList<String>();
-    private final List<String> category_meal = new ArrayList<String>();
-    private final List<String> category_occasion = new ArrayList<String>();
-    private final List<String> featured = new ArrayList<String>();
+    private final List<String> category_cuisine = new ArrayList<>();
+    private final List<String> category_meal = new ArrayList<>();
+    private final List<String> category_occasion = new ArrayList<>();
+    private final List<String> featured = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private SharedPreferences prefs;
     private boolean notifications_status;
@@ -70,7 +66,7 @@ public class EntranceActivity extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
 
-        textViewError = (TextView)findViewById(R.id.textview_error);
+        textViewError = findViewById(R.id.textview_error);
 
         // Activate a thread in order to get all the categories data
         activateThreadData();
@@ -82,47 +78,42 @@ public class EntranceActivity extends AppCompatActivity {
     }
 
     private void activateThreadData() {
-        Runnable ThreadCode = new Runnable() {
-            @SuppressLint("UseCompatLoadingForDrawables")
-            public void run() {
-                // Getting data from FireBase FireStore
-                fillCategoriesFireStore();
-                fillFeaturedsFireStore();
-            }
+        Runnable ThreadCode = () -> {
+            // Getting data from FireBase FireStore
+            fillCategoriesFireStore();
+            fillFeaturedsFireStore();
         };
         Thread thread = new Thread(ThreadCode);
         thread.start();
     }
 
+    @SuppressWarnings("unused")
     private void fillCategoriesFireStore() {
         // Get categories list from FireBase
         db.collection(Utilities.CATEGORIES)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String _id = document.getId();
-                                Map<String, Object> _data = document.getData();
-                                for (Map.Entry<String, Object> entry : document.getData().entrySet()) {
-                                    String key = entry.getKey();
-                                    String value = entry.getValue().toString();
-                                    String deviceLanguage = Utilities.getDeviceLanguage();
-                                    if (_id.equalsIgnoreCase(Utilities.CATEGORY_CUISINE)){
-                                        category_cuisine.add(key);
-                                    }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_MEAL)){
-                                        category_meal.add(key);
-                                    }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_OCCASION)){
-                                        category_occasion.add(key);
-                                    }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String _id = document.getId();
+                            Map<String, Object> _data = document.getData();
+                            for (Map.Entry<String, Object> entry : document.getData().entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue().toString();
+                                String deviceLanguage = Utilities.getDeviceLanguage();
+                                if (_id.equalsIgnoreCase(Utilities.CATEGORY_CUISINE)){
+                                    category_cuisine.add(key);
+                                }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_MEAL)){
+                                    category_meal.add(key);
+                                }else if (_id.equalsIgnoreCase(Utilities.CATEGORY_OCCASION)){
+                                    category_occasion.add(key);
                                 }
                             }
                         }
-                        else{
-                            String err_msg = getResources().getString(R.string._error_) + task.toString();
-                            textViewError.setText(err_msg);
-                        }
+                    }
+                    else{
+                        String err_msg = getResources().getString(R.string._error_) + task;
+                        textViewError.setText(err_msg);
                     }
                 });
     }
@@ -131,19 +122,16 @@ public class EntranceActivity extends AppCompatActivity {
         // Get featured list from FireBase
         db.collection(Utilities.FEATUREDS)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String _id = document.getId();
-                                featured.add(_id);
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String _id = document.getId();
+                            featured.add(_id);
                         }
-                        else{
-                            String err_msg = getResources().getString(R.string._error_) + task.toString();
-                            textViewError.setText(err_msg);
-                        }
+                    }
+                    else{
+                        String err_msg = getResources().getString(R.string._error_) + task;
+                        textViewError.setText(err_msg);
                     }
                 });
     }
@@ -158,9 +146,9 @@ public class EntranceActivity extends AppCompatActivity {
                     // Move Categories and Featureds to SharedPreferences
                     SharedPreferences prefs = getSharedPreferences(Utilities.SP_CATEGORIES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
-                    editor.putStringSet(Utilities.CATEGORY_CUISINE, new HashSet<String>(category_cuisine));
-                    editor.putStringSet(Utilities.CATEGORY_MEAL, new HashSet<String>(category_meal));
-                    editor.putStringSet(Utilities.CATEGORY_OCCASION, new HashSet<String>(category_occasion));
+                    editor.putStringSet(Utilities.CATEGORY_CUISINE, new HashSet<>(category_cuisine));
+                    editor.putStringSet(Utilities.CATEGORY_MEAL, new HashSet<>(category_meal));
+                    editor.putStringSet(Utilities.CATEGORY_OCCASION, new HashSet<>(category_occasion));
                     editor.apply();
                     // Move to the next activity
                     Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_FADE, true);

@@ -19,10 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -53,13 +49,12 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
     private FirebaseFirestore db;
     private int likes = 0, dislikes = 0;
     private TextView textViewLikes, textViewDislikes;
-    private Animation bottomUp, topDown, upBottom, downTop;
+    private Animation bottomUp, topDown;
     private String recipe_type, category_type, recipe_name;
     private int recipeChoice;
 
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
-//        endAnimations();
         super.onDismiss(dialog);
     }
 
@@ -68,13 +63,13 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        LayoutInflater layoutInflater = requireActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.layout_dialog_rate_recipe, null);
 
         builder.setView(view);
 
         db = FirebaseFirestore.getInstance();
-        prefs = getActivity().getSharedPreferences(Utilities.SP_RECIPES_TYPE, Context.MODE_PRIVATE);
+        prefs = requireActivity().getSharedPreferences(Utilities.SP_RECIPES_TYPE, Context.MODE_PRIVATE);
         editor = prefs.edit();
 
         assignIDs(view);
@@ -122,40 +117,11 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
         linearLayoutDislike.startAnimation(topDown);
     }
 
-    private void endAnimations(){
-        linearLayoutLike.startAnimation(upBottom);
-        linearLayoutDislike.startAnimation(downTop);
-    }
-
     private void setupAnimationListeners() {
         bottomUp = AnimationUtils.loadAnimation(getContext(),
                 R.anim.bottom_up);
         topDown = AnimationUtils.loadAnimation(getContext(),
                 R.anim.top_down);
-        upBottom = AnimationUtils.loadAnimation(getContext(),
-                R.anim.up_bottom);
-        downTop = AnimationUtils.loadAnimation(getContext(),
-                R.anim.down_top);
-        upBottom.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) { }
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                dismiss();
-            }
-            @Override
-            public void onAnimationRepeat(Animation animation) { }
-        });
-        downTop.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) { }
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                dismiss();
-            }
-            @Override
-            public void onAnimationRepeat(Animation animation) { }
-        });;
     }
 
     private void updateRateSP(int intLikeDislike){
@@ -165,46 +131,34 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
 
     private void setupOnClicks() {
         // TODO need to make sure the user can only like or dislike one time each recipe
-        linearlayout_container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                endAnimations();
-                dismiss();
+        linearlayout_container.setOnClickListener(view -> dismiss());
+        linearLayoutLike.setOnClickListener(view -> {
+            if (recipeChoice == Utilities.LIKE_DISLIKE_INT){
+                likes += 1;
+            }else if (recipeChoice == Utilities.DISLIKE_INT){
+                likes += 1;
+                dislikes -= 1;
+            }else{
+                return;
             }
+            updateBackgrounds(Utilities.LIKE_INT);
+            updateTexts();
+            updateRateSP(Utilities.LIKE_INT);
+            updateRecipeStatistics();
         });
-        linearLayoutLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (recipeChoice == Utilities.LIKE_DISLIKE_INT){
-                    likes += 1;
-                }else if (recipeChoice == Utilities.DISLIKE_INT){
-                    likes += 1;
-                    dislikes -= 1;
-                }else{
-                    return;
-                }
-                updateBackgrounds(Utilities.LIKE_INT);
-                updateTexts();
-                updateRateSP(Utilities.LIKE_INT);
-                updateRecipeStatistics();
+        linearLayoutDislike.setOnClickListener(view -> {
+            if (recipeChoice == Utilities.LIKE_DISLIKE_INT){
+                dislikes += 1;
+            }else if (recipeChoice == Utilities.LIKE_INT){
+                likes -= 1;
+                dislikes += 1;
+            }else{
+                return;
             }
-        });
-        linearLayoutDislike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (recipeChoice == Utilities.LIKE_DISLIKE_INT){
-                    dislikes += 1;
-                }else if (recipeChoice == Utilities.LIKE_INT){
-                    likes -= 1;
-                    dislikes += 1;
-                }else{
-                    return;
-                }
-                updateBackgrounds(Utilities.DISLIKE_INT);
-                updateTexts();
-                updateRateSP(Utilities.DISLIKE_INT);
-                updateRecipeStatistics();
-            }
+            updateBackgrounds(Utilities.DISLIKE_INT);
+            updateTexts();
+            updateRateSP(Utilities.DISLIKE_INT);
+            updateRecipeStatistics();
         });
     }
 
@@ -217,23 +171,16 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
         updates.put(Utilities.LIKES, likes);
         updates.put(Utilities.DISLIKES, dislikes);
         docRef.update(updates)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(getContext(), getResources().getString(R.string.rate_updated), Toast.LENGTH_SHORT).show();
-                        dismiss();
-                    }
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), getResources().getString(R.string.rate_updated), Toast.LENGTH_SHORT).show();
+                    dismiss();
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), getResources().getString(R.string.rate_update_fail), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .addOnFailureListener(e -> Toast.makeText(getContext(), getResources().getString(R.string.rate_update_fail), Toast.LENGTH_SHORT).show());
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void fillStatistics(){
-        prefs = getActivity().getSharedPreferences(Utilities.SP_RECIPES_TYPE, Context.MODE_PRIVATE);
+        prefs = requireActivity().getSharedPreferences(Utilities.SP_RECIPES_TYPE, Context.MODE_PRIVATE);
         String recipe_type  = prefs.getString(Utilities.SP_RECIPES_TYPE, Utilities.NULL);
         String category_type  = prefs.getString(Utilities.SP_CATEGORY_TYPE, Utilities.NULL);
         String recipe_name  = prefs.getString(Utilities.SP_RECIPE_NAME, Utilities.NULL);
@@ -242,25 +189,22 @@ public class RateRecipeDialog extends AppCompatDialogFragment {
                 .collection(recipe_type)
                 .document(recipe_name)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            try {
-                                likes = Math.toIntExact((long)document.get(Utilities.LIKES));
-                                dislikes = Math.toIntExact((long)document.get(Utilities.DISLIKES));
-                            }catch (NullPointerException e){
-                                likes = 0;
-                                dislikes = 0;
-                            }
-                        }
-                        else{
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        try {
+                            likes = Math.toIntExact((long)document.get(Utilities.LIKES));
+                            dislikes = Math.toIntExact((long)document.get(Utilities.DISLIKES));
+                        }catch (NullPointerException e){
                             likes = 0;
                             dislikes = 0;
                         }
-                        updateTexts();
                     }
+                    else{
+                        likes = 0;
+                        dislikes = 0;
+                    }
+                    updateTexts();
                 });
     }
 

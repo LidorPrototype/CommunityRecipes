@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class RVRecipeIngredientsAdapter extends RecyclerView.Adapter<RVRecipeIngredientsAdapter.RecipeIngredientsViewHolder> {
 
-    private final List<String> ingredient_names = new ArrayList<String>(), ingredient_amounts = new ArrayList<String>();
+    private final List<String> ingredient_names = new ArrayList<>(), ingredient_amounts = new ArrayList<>();
     protected LayoutInflater categoriesInflater;
     protected Context context;
 

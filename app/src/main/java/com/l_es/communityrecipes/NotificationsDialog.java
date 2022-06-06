@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +28,7 @@ import androidx.appcompat.widget.SwitchCompat;
  * |  __|   _   |__  |
  * |____|  |_|  |____|
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class NotificationsDialog extends AppCompatDialogFragment {
 
     private SharedPreferences prefs;
@@ -42,12 +42,12 @@ public class NotificationsDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        LayoutInflater layoutInflater = requireActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.layout_dialog_notifications, null);
 
         builder.setView(view);
 
-        prefs = getActivity().getSharedPreferences(Utilities.SP_CREATION_TAG, Context.MODE_PRIVATE);
+        prefs = requireActivity().getSharedPreferences(Utilities.SP_CREATION_TAG, Context.MODE_PRIVATE);
         editor = prefs.edit();
 
         switchCompatCookReminder = view.findViewById(R.id.switch_cook_reminder_notification);
@@ -57,20 +57,12 @@ public class NotificationsDialog extends AppCompatDialogFragment {
 
         switchCompatCookReminder.setChecked(cookReminder);
 
-        switchCompatCookReminder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                cookReminder = isChecked;
-                editor.putBoolean(Utilities.SP_NOTIFICATIONS, cookReminder);
-                editor.apply();
-            }
+        switchCompatCookReminder.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            cookReminder = isChecked;
+            editor.putBoolean(Utilities.SP_NOTIFICATIONS, cookReminder);
+            editor.apply();
         });
-        buttonOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        buttonOK.setOnClickListener(view1 -> dismiss());
 
         AlertDialog dialog = builder.create();
 

@@ -1,5 +1,6 @@
 package com.l_es.communityrecipes.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +27,8 @@ import java.util.List;
  */
 public class SpinnerMusicAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<String> songsList;
+    private final Context context;
+    private final List<String> songsList;
 
     public SpinnerMusicAdapter(Context context, List<String> musicList) {
         this.context = context;
@@ -51,7 +52,7 @@ public class SpinnerMusicAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        View rootView = LayoutInflater
+        @SuppressLint("ViewHolder") View rootView = LayoutInflater
                 .from(context)
                 .inflate(R.layout.layout_spinner_music, viewGroup, false);
 

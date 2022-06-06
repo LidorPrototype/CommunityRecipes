@@ -1,5 +1,6 @@
 package com.l_es.communityrecipes.Services;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -30,11 +31,13 @@ import com.l_es.communityrecipes.Utilities;
  */
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
+    @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
         showNotification(context);
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     void showNotification(Context context) {
         NotificationCompat.Builder mBuilder;
         Intent notificationIntent = new Intent(context, EntranceActivity.class);

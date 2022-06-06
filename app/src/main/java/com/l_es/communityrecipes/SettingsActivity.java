@@ -1,12 +1,11 @@
 package com.l_es.communityrecipes;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +23,9 @@ import com.l_es.communityrecipes.Services.SoundService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class SettingsActivity extends AppCompatActivity implements MusicConfigDialog.MusicConfigDialogListener {
 
     private ListView listViewSettings;
@@ -65,14 +66,14 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
     }
 
     private void setupSettingsList() {
-        settings_icons = new ArrayList<Integer>();
+        settings_icons = new ArrayList<>();
         settings_icons.add(R.drawable.feature);
         settings_icons.add(R.drawable.notifications_24);
         settings_icons.add(R.drawable.add_24);
         settings_icons.add(R.drawable.rate_24);
         settings_icons.add(R.drawable.expand);
         settings_icons.add(R.drawable.logout);
-        settings_names = new ArrayList<String>();
+        settings_names = new ArrayList<>();
         settings_names.add(getResources().getString(R.string.get_featured));         //  0
         settings_names.add(getResources().getString(R.string.notifications));        //  1
         settings_names.add(getResources().getString(R.string.add_a_recipe));         //  2
@@ -88,56 +89,43 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
     }
 
     private void setupOnClicks() {
-        listViewSettings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                switch (position){
-                    case 0: // Get Featured
-                        Toast.makeText(SettingsActivity.this, getResources().getString(R.string.pay_us), Toast.LENGTH_SHORT).show();
-                        sendEmail();
-                        break;
-                    case 1: // Notifications
-                        NotificationsDialog notificationsDialog = new NotificationsDialog();
-                        notificationsDialog.show(getSupportFragmentManager(), "notifications config dialog");
-                        break;
-                    case 2: // Add A Recipe
-                        Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true);
-                        finish();
-                        break;
-                    case 3: // Rate Us
-                        break;
-                    case 4: // Check Other Apps
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("https://play.google.com/store/apps/dev?id=6589420104492859272"));
-                        startActivity(intent);
-                        finish();
-                        break;
-                    case 5:
-                        if (user != null){
-                            FirebaseAuth.getInstance().signOut();
-                            Toast.makeText(context, getResources().getString(R.string.signed_out), Toast.LENGTH_SHORT).show();
-                            Intent intent_signed_out = new Intent(SettingsActivity.this, MainRecipesCategoriesActivity.class);
-                            startActivity(intent_signed_out);
-                        }else{
-                            Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);
-                        }
-                        finish();
-                        break;
-                }
+        listViewSettings.setOnItemClickListener((adapterView, view, position, l) -> {
+            switch (position){
+                case 0: // Get Featured
+                    Toast.makeText(SettingsActivity.this, getResources().getString(R.string.pay_us), Toast.LENGTH_SHORT).show();
+                    sendEmail();
+                    break;
+                case 1: // Notifications
+                    NotificationsDialog notificationsDialog = new NotificationsDialog();
+                    notificationsDialog.show(getSupportFragmentManager(), "notifications config dialog");
+                    break;
+                case 2: // Add A Recipe
+                    Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true);
+                    finish();
+                    break;
+                case 3: // Rate Us
+                    break;
+                case 4: // Check Other Apps
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://play.google.com/store/apps/dev?id=6589420104492859272"));
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 5:
+                    if (user != null){
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(context, getResources().getString(R.string.signed_out), Toast.LENGTH_SHORT).show();
+                        Intent intent_signed_out = new Intent(SettingsActivity.this, MainRecipesCategoriesActivity.class);
+                        startActivity(intent_signed_out);
+                    }else{
+                        Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);
+                    }
+                    finish();
+                    break;
             }
         });
-        cardViewMusic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMusicConfigDialog();
-            }
-        });
-        cardViewCredits.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openCreditsDialog();
-            }
-        });
+        cardViewMusic.setOnClickListener(view -> openMusicConfigDialog());
+        cardViewCredits.setOnClickListener(view -> openCreditsDialog());
     }
 
     public void assignIDs(){
@@ -151,13 +139,8 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
         Toolbar toolbar = findViewById(R.id.toolbar_settings);
         toolbar.setTitle(getResources().getString(R.string.settings));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     private void openCreditsDialog(){
@@ -177,6 +160,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
         editor.apply();
     }
 
+    @SuppressLint("IntentReset")
     protected void sendEmail() {
         String[] TO = {Utilities.EMAIL_TO};
         String[] CC = {""};

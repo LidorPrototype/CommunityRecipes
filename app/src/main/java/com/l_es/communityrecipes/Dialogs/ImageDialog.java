@@ -46,7 +46,7 @@ public class ImageDialog extends AppCompatDialogFragment {
         try {
             listener = (ImageDialogListener) context;
         }catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement ImageDialogListener Mate!");
+            throw new ClassCastException(context + " must implement ImageDialogListener Mate!");
         }
     }
 
@@ -55,14 +55,17 @@ public class ImageDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.recipe_image_dialog_layout, null);
 
         builder.setView(view);
 
         assignIDs(view);
 
-        byte[] byteArray = getArguments().getByteArray("recipe_image");
+        byte[] byteArray = new byte[0];
+        if (getArguments() != null) {
+            byteArray = getArguments().getByteArray("recipe_image");
+        }
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         recipeImageView.setImageBitmap(bmp);
@@ -76,19 +79,11 @@ public class ImageDialog extends AppCompatDialogFragment {
     }
 
     public void setupOnClicks(){
-        buttonRetakePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onRetakeImage();
-                dismiss();
-            }
+        buttonRetakePhoto.setOnClickListener(view -> {
+            listener.onRetakeImage();
+            dismiss();
         });
-        buttonGoodPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        buttonGoodPhoto.setOnClickListener(view -> dismiss());
     }
 
     public void assignIDs(View _view_){

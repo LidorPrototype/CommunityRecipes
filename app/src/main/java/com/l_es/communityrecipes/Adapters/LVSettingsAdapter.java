@@ -1,5 +1,6 @@
 package com.l_es.communityrecipes.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -31,8 +32,8 @@ import java.util.List;
  */
 public class LVSettingsAdapter extends ArrayAdapter<String> {
 
-    private List<String> settings_names;
-    private List<Integer> settings_icons;
+    private final List<String> settings_names;
+    private final List<Integer> settings_icons;
     protected Context context;
 
     public LVSettingsAdapter(Context context, List<Integer> icons, List<String> names) {
@@ -57,6 +58,7 @@ public class LVSettingsAdapter extends ArrayAdapter<String> {
         return position;
     }
 
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

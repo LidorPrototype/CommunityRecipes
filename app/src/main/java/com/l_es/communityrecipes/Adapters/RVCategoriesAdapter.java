@@ -51,14 +51,11 @@ public class RVCategoriesAdapter extends RecyclerView.Adapter<RVCategoriesAdapte
             super(itemView);
             category_name = itemView.findViewById(R.id.neumorphic_category_name);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(_listener != null){
-                        int position = getBindingAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            _listener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(view -> {
+                if(_listener != null){
+                    int position = getBindingAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        _listener.onItemClick(position);
                     }
                 }
             });

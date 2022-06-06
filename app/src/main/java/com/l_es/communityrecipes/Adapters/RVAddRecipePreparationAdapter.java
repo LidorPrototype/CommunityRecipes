@@ -29,11 +29,11 @@ import java.util.List;
  */
 public class RVAddRecipePreparationAdapter extends RecyclerView.Adapter<RVAddRecipePreparationAdapter.AddRecipePreparationViewHolder> {
 
-    private List<String> preparation_texts = new ArrayList<String>();
+    private final List<String> preparation_texts = new ArrayList<>();
     protected LayoutInflater recipeInflater;
     protected Context context;
 
-    public class AddRecipePreparationViewHolder extends RecyclerView.ViewHolder {
+    public static class AddRecipePreparationViewHolder extends RecyclerView.ViewHolder {
 
         public TextView preparation_level, preparation_text;
 
@@ -50,10 +50,6 @@ public class RVAddRecipePreparationAdapter extends RecyclerView.Adapter<RVAddRec
         this.recipeInflater = LayoutInflater.from(this.context);
     }
 
-    public List<String> getPreparations() {
-        return preparation_texts;
-    }
-
     public String getItemAt(int position) {
         return preparation_texts.get(position);
     }
@@ -62,7 +58,7 @@ public class RVAddRecipePreparationAdapter extends RecyclerView.Adapter<RVAddRec
     @Override
     public RVAddRecipePreparationAdapter.AddRecipePreparationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = this.recipeInflater.inflate(R.layout.add_recipe_preparations_layout, parent, false);
-        return new RVAddRecipePreparationAdapter.AddRecipePreparationViewHolder(v);
+        return new AddRecipePreparationViewHolder(v);
     }
 
     @Override

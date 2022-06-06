@@ -34,6 +34,7 @@ import java.util.List;
  * |  __|   _   |__  |
  * |____|  |_|  |____|
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class CreditsDialog extends AppCompatDialogFragment {
 
     private ListView listViewCredits;
@@ -45,7 +46,7 @@ public class CreditsDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        LayoutInflater layoutInflater = requireActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.layout_dialog_credits, null);
 
         builder.setView(view);
@@ -53,16 +54,11 @@ public class CreditsDialog extends AppCompatDialogFragment {
         listViewCredits = view.findViewById(R.id.list_view_credits);
         buttonOK = view.findViewById(R.id.button_credits_dialog_ok);
 
-        buttonOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        buttonOK.setOnClickListener(view1 -> dismiss());
 
         creditors = fillCreditorsList();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.layout_listview_credits_dialog,
                 creditors);
@@ -73,9 +69,9 @@ public class CreditsDialog extends AppCompatDialogFragment {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         dialog.getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
+//        int width = displayMetrics.widthPixels;
         ViewGroup.LayoutParams params = listViewCredits.getLayoutParams();
-        params.height = (int)(height / 3);
+        params.height = height / 3;
         listViewCredits.setLayoutParams(params);
         listViewCredits.requestLayout();
 

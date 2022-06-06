@@ -36,10 +36,6 @@ public class RVRecipesAdapter extends RecyclerView.Adapter<RVRecipesAdapter.Reci
     protected LayoutInflater recipesInflater;
     protected Context context;
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
     public void setOnItemClickListener(RVCategoriesAdapter.OnItemClickListener listener){
         mListener = listener;
     }
@@ -54,14 +50,11 @@ public class RVRecipesAdapter extends RecyclerView.Adapter<RVRecipesAdapter.Reci
             recipe_name = itemView.findViewById(R.id.text_view_category_recipes_name);
             recipe_image = itemView.findViewById(R.id.image_view_category_recipes);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(_listener != null){
-                        int position = getBindingAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            _listener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(view -> {
+                if(_listener != null){
+                    int position = getBindingAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        _listener.onItemClick(position);
                     }
                 }
             });
@@ -88,7 +81,7 @@ public class RVRecipesAdapter extends RecyclerView.Adapter<RVRecipesAdapter.Reci
     }
 
     @Override
-    public void onBindViewHolder(RVRecipesAdapter.RecipesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RVRecipesAdapter.RecipesViewHolder holder, int position) {
         if(recipes_names.size() != 0 && position < recipes_names.size()) {
             holder.recipe_name.setText(recipes_names.get(position));
         }else {

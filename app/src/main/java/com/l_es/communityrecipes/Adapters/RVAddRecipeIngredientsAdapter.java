@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.l_es.communityrecipes.R;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,11 +29,12 @@ import java.util.stream.IntStream;
  * |  __|   _   |__  |
  * |____|  |_|  |____|
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class RVAddRecipeIngredientsAdapter extends RecyclerView.Adapter<RVAddRecipeIngredientsAdapter.RVAddRecipeIngredientsViewHolder> {
 
-    private List<String> ingredients_names = new ArrayList<String>();
-    private List<String> ingredients_amounts = new ArrayList<String>();
-    private Map<String, String> ingredients = new HashMap<String, String>();
+    private final List<String> ingredients_names;
+    private final List<String> ingredients_amounts;
+    private final Map<String, String> ingredients;
     protected LayoutInflater recipeInflater;
     protected Context context;
 
@@ -43,7 +42,7 @@ public class RVAddRecipeIngredientsAdapter extends RecyclerView.Adapter<RVAddRec
 
         public TextView ingredients_name, ingredients_amount;
 
-        public RVAddRecipeIngredientsViewHolder(View itemView) { // , RVCategoriesAdapter.OnItemClickListener _listener
+        public RVAddRecipeIngredientsViewHolder(View itemView) {
             super(itemView);
             ingredients_name = itemView.findViewById(R.id.text_view_ingredient_name);
             ingredients_amount = itemView.findViewById(R.id.text_view_ingredient_amount);

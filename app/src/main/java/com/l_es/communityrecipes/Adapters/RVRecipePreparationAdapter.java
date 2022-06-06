@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class RVRecipePreparationAdapter extends RecyclerView.Adapter<RVRecipePreparationAdapter.IndividualRecipesViewHolder> {
 
-    private final List<String> _recipe_preparation_number = new ArrayList<String>(), _recipe_preparation_text = new ArrayList<String>();
+    private final List<String> _recipe_preparation_number = new ArrayList<>(), _recipe_preparation_text = new ArrayList<>();
     protected LayoutInflater recipeInflater;
     protected Context context;
 

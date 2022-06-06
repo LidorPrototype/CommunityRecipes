@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +22,6 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.l_es.communityrecipes.Adapters.RVRecipeIngredientsAdapter;
@@ -35,20 +32,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class IndividualRecipeActivity extends AppCompatActivity {
 
     private TextView textViewHours, textViewMinutes;
     private ImageView imageViewRecipe;
-    private String[] avg_times = new String[2];
+    private final String[] avg_times = new String[2];
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private SharedPreferences prefs;
     private Context context;
     private RecyclerView recyclerViewPreparation, recyclerViewIngredients;
     private RVRecipePreparationAdapter rvRecipePreparationAdapter;
     private RVRecipeIngredientsAdapter rvRecipeIngredientsAdapter;
-    private List<String> preparations = new ArrayList<String>();
-    private Map<String, String> ingredients = new HashMap<String, String>();
+    private List<String> preparations = new ArrayList<>();
+    private Map<String, String> ingredients = new HashMap<>();
     private String category_type, recipe_type, recipe_name, recipe_image;
 
     @Override
@@ -106,35 +105,33 @@ public class IndividualRecipeActivity extends AppCompatActivity {
      * :avg_times[0]: Hours
      * :avg_times[1]: Minutes
      */
+    @SuppressWarnings("unchecked")
     private void getRecipeDataFromDB(String _category_type, String _recipe_type, String _recipe_name) {
         db.collection(Utilities.RECIPES)
                 .document(_category_type)
                 .collection(_recipe_type)
                 .document(_recipe_name)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            DocumentSnapshot document = task.getResult();
-                            String avg_h = document.getString(Utilities.AVG_HOURS);
-                            String avg_m = document.getString(Utilities.AVG_MINUTES);
-                            preparations =  (List<String>) document.get(Utilities.PREPARATION);;
-                            ingredients = (Map<String, String>) document.get(Utilities.INGREDIENTS);
-                            try {
-                                ingredients = Utilities.sortMapByKeyLength(ingredients, 1, -1);
-                            }catch (Exception ignored) { }
-                            avg_times[0] = avg_h;
-                            avg_times[1] = avg_m;
-                            textViewHours.setText(avg_times[0]);
-                            textViewMinutes.setText(avg_times[1]);
-                            try {
-                                rvRecipePreparationAdapter = new RVRecipePreparationAdapter(context, preparations);
-                                recyclerViewPreparation.setAdapter(rvRecipePreparationAdapter);
-                                rvRecipeIngredientsAdapter = new RVRecipeIngredientsAdapter(context, ingredients);
-                                recyclerViewIngredients.setAdapter(rvRecipeIngredientsAdapter);
-                            }catch (Exception ignored) { }
-                        }
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        DocumentSnapshot document = task.getResult();
+                        String avg_h = document.getString(Utilities.AVG_HOURS);
+                        String avg_m = document.getString(Utilities.AVG_MINUTES);
+                        preparations =  (List<String>) document.get(Utilities.PREPARATION);
+                        ingredients = (Map<String, String>) document.get(Utilities.INGREDIENTS);
+                        try {
+                            ingredients = Utilities.sortMapByKeyLength(ingredients, 1, -1);
+                        }catch (Exception ignored) { }
+                        avg_times[0] = avg_h;
+                        avg_times[1] = avg_m;
+                        textViewHours.setText(avg_times[0]);
+                        textViewMinutes.setText(avg_times[1]);
+                        try {
+                            rvRecipePreparationAdapter = new RVRecipePreparationAdapter(context, preparations);
+                            recyclerViewPreparation.setAdapter(rvRecipePreparationAdapter);
+                            rvRecipeIngredientsAdapter = new RVRecipeIngredientsAdapter(context, ingredients);
+                            recyclerViewIngredients.setAdapter(rvRecipeIngredientsAdapter);
+                        }catch (Exception ignored) { }
                     }
                 });
     }
@@ -148,28 +145,27 @@ public class IndividualRecipeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.rate_recipe:
-                RateRecipeDialog rateRecipeDialog = new RateRecipeDialog();
-                rateRecipeDialog.show(getSupportFragmentManager(), "rate recipe dialog");
-                return true;
-            case R.id.item_add_recipe:
-                Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true);
-                return true;
-            case R.id.item_settings:
-                Utilities.useBungee(context, SettingsActivity.class, Utilities.ANIMATION_FADE, true);
-                return true;
-            case R.id.item_login_or_register:
-                Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);
-                return true;
-            case R.id.item_about:
-                Utilities.createAboutDialog(this);
-                return true;
-            case R.id.item_exit:
-                this.finishAffinity();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.rate_recipe){
+            RateRecipeDialog rateRecipeDialog = new RateRecipeDialog();
+            rateRecipeDialog.show(getSupportFragmentManager(), "rate recipe dialog");
+            return true;
+        }else if(item.getItemId() == R.id.item_add_recipe){
+            Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true);
+            return true;
+        }else if (item.getItemId() == R.id.item_settings){
+            Utilities.useBungee(context, SettingsActivity.class, Utilities.ANIMATION_FADE, true);
+            return true;
+        }else if (item.getItemId() == R.id.item_login_or_register){
+            Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);
+            return true;
+        }else if (item.getItemId() == R.id.item_about){
+            Utilities.createAboutDialog(this);
+            return true;
+        }else if (item.getItemId() == R.id.item_exit){
+            this.finishAffinity();
+            return true;
+        }else {
+            return super.onOptionsItemSelected(item);
         }
     }
 
@@ -177,13 +173,8 @@ public class IndividualRecipeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_individual_recipe);
         toolbar.setTitle(recipe_name);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     @Override

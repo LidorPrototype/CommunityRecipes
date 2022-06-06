@@ -11,6 +11,7 @@ import android.util.Log;
 import com.l_es.communityrecipes.R;
 import com.l_es.communityrecipes.Utilities;
 
+@SuppressWarnings({"unused", "deprecation"})
 public class SoundService extends Service {
 
     protected MediaPlayer player;
@@ -28,7 +29,6 @@ public class SoundService extends Service {
         SharedPreferences prefs = getSharedPreferences(Utilities.SP_CREATION_TAG, Context.MODE_PRIVATE);
         int raw_music = prefs.getInt(Utilities.SP_MUSIC_SONG, R.raw.order);
         player = MediaPlayer.create(getApplicationContext(), raw_music);
-        //player.start(); // no need to call prepare(); create() does that for you
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {

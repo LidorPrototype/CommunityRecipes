@@ -16,7 +16,7 @@ package com.l_es.communityrecipes;
 public class Translations {
 
     public static String translateCategoryHelper(String raw_category, boolean firebase_flag){
-        String word = "";
+        String word;
         if (firebase_flag){
             word = translateToEnglishCategory(raw_category);
         }else {

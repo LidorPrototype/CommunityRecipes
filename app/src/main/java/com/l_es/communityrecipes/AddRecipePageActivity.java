@@ -1,12 +1,12 @@
 package com.l_es.communityrecipes;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -20,14 +20,11 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -44,28 +41,30 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import soup.neumorphism.NeumorphButton;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class AddRecipePageActivity extends AppCompatActivity implements ImageDialog.ImageDialogListener {
 
     private NumberPicker numberPickerHours, numberPickerMinutes;
     private NeumorphButton uploadImageButton, discardButton, submitRecipeButton;
-    private static List<String> recipe_preparation_items = new ArrayList<String>();
-    private static List<String> recipe_ingredients_names = new ArrayList<String>();
-    private static List<String> recipe_ingredients_amounts = new ArrayList<String>();
+    private static List<String> recipe_preparation_items = new ArrayList<>();
+    private static List<String> recipe_ingredients_names = new ArrayList<>();
+    private static List<String> recipe_ingredients_amounts = new ArrayList<>();
     private Button buttonEnterIngredient;
     private EditText editTextIngredientName, editTextIngredientAmount;
     private ImageView imageViewRecipeImage;
     private Bitmap imageBitmap;
     private EditText editTextRecipeName;
     private Spinner spinnerCategories;
-    private static Context context;
-    private static List<String> category_cuisine = new ArrayList<String>();
-    private static List<String> category_meal = new ArrayList<String>();
-    private static List<String> category_occasion = new ArrayList<String>();
-    private static List<String> categories = new ArrayList<String>();
+    private Context context;
+    private static List<String> category_cuisine = new ArrayList<>();
+    private static List<String> category_meal = new ArrayList<>();
+    private static List<String> category_occasion = new ArrayList<>();
+    private static final List<String> categories = new ArrayList<>();
     private String selected_category_type, general_recipe_type = "";
     private EditText editTextAddPreparation;
     private Button buttonEnterPreparation;
@@ -153,12 +152,12 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         recyclerViewPreparations.setAdapter(rvAddRecipePreparationAdapter);
     }
 
-    protected static void setupSharedPreferences(){
+    protected void setupSharedPreferences(){
         SharedPreferences prefs = context.getSharedPreferences(Utilities.SP_CATEGORIES, Context.MODE_PRIVATE);
-        category_cuisine = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_CUISINE, new HashSet<String>()));
-        category_meal = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_MEAL, new HashSet<String>()));
-        category_occasion = new ArrayList<String>(prefs.getStringSet(Utilities.CATEGORY_OCCASION, new HashSet<String>()));
-        List<String> categories_raw = new ArrayList<String>();
+        category_cuisine = new ArrayList<>(prefs.getStringSet(Utilities.CATEGORY_CUISINE, new HashSet<>()));
+        category_meal = new ArrayList<>(prefs.getStringSet(Utilities.CATEGORY_MEAL, new HashSet<>()));
+        category_occasion = new ArrayList<>(prefs.getStringSet(Utilities.CATEGORY_OCCASION, new HashSet<>()));
+        List<String> categories_raw = new ArrayList<>();
         categories_raw.addAll(category_cuisine);
         categories_raw.addAll(category_meal);
         categories_raw.addAll(category_occasion);
@@ -167,11 +166,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         }
     }
 
-    public static void removePreparation(int remove) {
-        recipe_preparation_items.remove(remove);
-//        lvAddRecipePreparationAdapter.notifyDataSetChanged();
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     private void addPreparation(String preparation) {
         recipe_preparation_items.add(preparation);
         rvAddRecipePreparationAdapter = new RVAddRecipePreparationAdapter(this, recipe_preparation_items);
@@ -179,6 +174,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         rvAddRecipePreparationAdapter.notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void addIngredient(String ingredient_name, String ingredient_amount) {
         recipe_ingredients_names.add(ingredient_name);
         recipe_ingredients_amounts.add(ingredient_amount);
@@ -204,7 +200,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
     }
 
     private void setupSpinner(){
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getApplicationContext(),
                 android.R.layout.simple_spinner_item,
                 categories);
@@ -250,6 +246,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         numberPickerMinutes.setMaxValue(59);
     }
 
+    @SuppressWarnings("deprecation")
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
@@ -269,90 +266,62 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         }
     }
 
+    @SuppressWarnings("UnnecessaryReturnStatement")
     private void setupOnClicks() {
-        uploadImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dispatchTakePictureIntent();
+        uploadImageButton.setOnClickListener(view -> dispatchTakePictureIntent());
+        imageViewRecipeImage.setOnClickListener(view -> openImageDialog());
+        buttonEnterPreparation.setOnClickListener(view -> {
+            String preparation = editTextAddPreparation.getText().toString();
+            if(preparation.length() == 0){
+                return;
+            }else{
+                editTextAddPreparation.setText("");
+                addPreparation(preparation);
             }
         });
-        imageViewRecipeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImageDialog();
+        buttonEnterIngredient.setOnClickListener(view -> {
+            String ingredient_name = editTextIngredientName.getText().toString();
+            String ingredient_amount = editTextIngredientAmount.getText().toString();
+            if(ingredient_name.length() == 0 || ingredient_amount.length() == 0){
+                return;
+            }else{
+                editTextIngredientName.setText("");
+                editTextIngredientAmount.setText("");
+                addIngredient(ingredient_name, ingredient_amount);
             }
         });
-        buttonEnterPreparation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String preparation = editTextAddPreparation.getText().toString();
-                if(preparation.length() == 0){
-                    return;
-                }else{
-                    editTextAddPreparation.setText("");
-                    addPreparation(preparation);
+        discardButton.setOnClickListener(view -> onBackPressed());
+        submitRecipeButton.setOnClickListener(view -> {
+            String checker_str = checkSubmitVariables();
+            if(!checker_str.equals("")){
+                Toast.makeText(context, checker_str, Toast.LENGTH_SHORT).show();
+            }else{
+                String recipe_name = editTextRecipeName.getText().toString();
+                String recipe_hours = numberPickerHours.getValue() + "";
+                String recipe_minutes = numberPickerMinutes.getValue() + "";
+                List<String> recipe_preparations = new ArrayList<>();
+                for (int i=0;i<rvAddRecipePreparationAdapter.getItemCount();i++){
+                    recipe_preparations.add(rvAddRecipePreparationAdapter.getItemAt(i));
                 }
+                Map<String, String> recipe_ingredients = rvAddRecipeIngredientsAdapter.getIngredients();
+                selected_category_type = Translations.translateCategoryHelper(spinnerCategories.getSelectedItem().toString(), true);
+                general_recipe_type = getRecipeType(selected_category_type);
+                imageRef = storageRef.child(Utilities.IMAGES_PATH + recipe_name + " _ " + UUID.randomUUID() + ".jpg");
+                uploadStartEnd(0);
+                uploadRecipeToFirebaseStorage(
+                        imageBitmap,
+                        recipe_name,
+                        recipe_hours,
+                        recipe_minutes,
+                        recipe_preparations,
+                        recipe_ingredients,
+                        selected_category_type,
+                        general_recipe_type
+                );
+                uploadStartEnd(1); // TODO
             }
         });
-        buttonEnterIngredient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String ingredient_name = editTextIngredientName.getText().toString();
-                String ingredient_amount = editTextIngredientAmount.getText().toString();
-                if(ingredient_name.length() == 0 || ingredient_amount.length() == 0){
-                    return;
-                }else{
-                    editTextIngredientName.setText("");
-                    editTextIngredientAmount.setText("");
-                    addIngredient(ingredient_name, ingredient_amount);
-                }
-            }
-        });
-        discardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-        submitRecipeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String checker_str = checkSubmitVariables();
-                if(!checker_str.equals("")){
-                    Toast.makeText(context, checker_str, Toast.LENGTH_SHORT).show();
-                }else{
-                    String recipe_name = editTextRecipeName.getText().toString();
-                    String recipe_hours = numberPickerHours.getValue() + "";
-                    String recipe_minutes = numberPickerMinutes.getValue() + "";
-                    List<String> recipe_preparations =  new ArrayList<String>();
-                    for (int i=0;i<rvAddRecipePreparationAdapter.getItemCount();i++){
-                        recipe_preparations.add(rvAddRecipePreparationAdapter.getItemAt(i));
-                    }
-                    Map<String, String> recipe_ingredients = rvAddRecipeIngredientsAdapter.getIngredients();
-                    selected_category_type = Translations.translateCategoryHelper(spinnerCategories.getSelectedItem().toString(), true);
-                    general_recipe_type = getRecipeType(selected_category_type);
-                    imageRef = storageRef.child(Utilities.IMAGES_PATH + recipe_name + " _ " + UUID.randomUUID() + ".jpg");
-                    uploadStartEnd(0);
-                    uploadRecipeToFirebaseStorage(
-                            imageBitmap,
-                            recipe_name,
-                            recipe_hours,
-                            recipe_minutes,
-                            recipe_preparations,
-                            recipe_ingredients,
-                            selected_category_type,
-                            general_recipe_type
-                    );
-                    uploadStartEnd(1); // TODO
-                }
-            }
-        });
-        buttonLoginOrRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);
-            }
-        });
+        buttonLoginOrRegister.setOnClickListener(view -> Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true));
     }
 
     private String getRecipeType(String category_type) {
@@ -386,24 +355,15 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         bitmap_.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] data = byteArrayOutputStream.toByteArray();
         UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.upload_failed), Toast.LENGTH_SHORT).show();
-            }
-        }).addOnSuccessListener(AddRecipePageActivity.this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.upload_success), Toast.LENGTH_SHORT).show();
-                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        String downloadUrl = uri.toString();
-                        uploadRecipeToFirebaseFireStore(downloadUrl, name_, hours_,
-                                minutes_, preparations_, ingredients_, category_type_, recipe_type_);
-                    }
-                });
-            }
+        uploadTask
+                .addOnFailureListener(exception -> Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.upload_failed), Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(AddRecipePageActivity.this, taskSnapshot -> {
+            Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.upload_success), Toast.LENGTH_SHORT).show();
+            imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                String downloadUrl = uri.toString();
+                uploadRecipeToFirebaseFireStore(downloadUrl, name_, hours_,
+                        minutes_, preparations_, ingredients_, category_type_, recipe_type_);
+            });
         });
     }
 
@@ -434,20 +394,12 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         db.collection(Utilities.RECIPES).document(recipe_type)
             .collection(category_type).document(name_)
                 .set(recipe_data)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        resetAllFields();
-                        Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_ZOOM, true);
-                        finish();
-                    }
+                .addOnSuccessListener(aVoid -> {
+                    resetAllFields();
+                    Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_ZOOM, true);
+                    finish();
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.recipe_creation_failed), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .addOnFailureListener(e -> Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.recipe_creation_failed), Toast.LENGTH_SHORT).show());
     }
 
     public void openImageDialog(){
@@ -465,13 +417,10 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         Toolbar toolbar = findViewById(R.id.toolbar_add_recipe);
         toolbar.setTitle(getResources().getString(R.string.submit_recipe));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                onBackPressed();
-            }
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> {
+            finish();
+            onBackPressed();
         });
     }
 

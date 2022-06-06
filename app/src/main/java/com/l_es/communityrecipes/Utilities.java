@@ -142,6 +142,7 @@ public class Utilities {
         return null;
     }
 
+    @SuppressWarnings("deprecation")
     public static boolean isMyServiceRunning(Class<?> serviceClass, Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -181,6 +182,7 @@ public class Utilities {
         alarmManager.cancel(pendingIntent);
     }
 
+    @SuppressWarnings("deprecation")
     public static String getInfoAboutDevice(Activity a) {
         StringBuilder s = new StringBuilder();
         try {
@@ -233,9 +235,9 @@ public class Utilities {
     }
 
     public static <T, E> Map<T, E> sortMapByKeyLength(Map<T, E> map, int goodValue, int badValue){
-        TreeMap<T, E> treeMap = new TreeMap<T, E>(
+        TreeMap<T, E> treeMap = new TreeMap<>(
                 (t1, t2) -> {
-                    if (t1 instanceof String && t2 instanceof String){
+                    if (t1 instanceof String && t2 instanceof String) {
                         String s1 = t1.toString();
                         String s2 = t2.toString();
                         if (s1.length() > s2.length()) {
@@ -245,7 +247,7 @@ public class Utilities {
                         } else {
                             return s1.compareTo(s2);
                         }
-                    }else{
+                    } else {
                         return errorInt; // Not implemented yet!
                     }
                 });
