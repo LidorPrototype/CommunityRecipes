@@ -108,7 +108,7 @@ public class Utilities {
     // Language Related
     public static final String LANGUAGE_ENGLISH             =   "English";
     public static final String LANGUAGE_HEBREW              =   "עברית";
-    public static final String LANGUAGE_RUSSIAN             =   "Русский";
+    public static final String LANGUAGE_RUSSIAN             =   "русский";
     public static final String CATEGORY_CUISINE_ENGLISH     =   "Cuisine";
     public static final String CATEGORY_MEAL_ENGLISH        =   "Meal";
     public static final String CATEGORY_OCCASION_ENGLISH    =   "Occasion";
