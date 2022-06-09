@@ -115,6 +115,7 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_login_or_register);
         toolbar.setTitle(getResources().getString(R.string.login_or_register));
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
         try {
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

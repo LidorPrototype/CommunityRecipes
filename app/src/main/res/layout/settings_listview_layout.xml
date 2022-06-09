@@ -25,12 +25,13 @@
         android:layout_alignBottom="@+id/image_view_settings_icon"
         android:layout_marginStart="10sp"
         android:layout_toEndOf="@+id/image_view_settings_icon"
-        android:textSize="16sp"
-        android:paddingStart="6sp"
-        android:paddingEnd="6sp"
-        android:textColor="@color/neu_text_color"
+        android:fontFamily="@font/frank_ruhl_libre_medium"
         android:gravity="center"
         android:lines="1"
-        android:text="@string/app_title" />
+        android:paddingStart="6sp"
+        android:paddingEnd="6sp"
+        android:text="@string/app_title"
+        android:textColor="@color/neu_text_color"
+        android:textSize="16sp" />
 
 </RelativeLayout>

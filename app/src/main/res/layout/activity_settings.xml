@@ -51,6 +51,7 @@
                 android:layout_width="0sp"
                 android:layout_height="match_parent"
                 android:text="Hello World!"
+                android:fontFamily="@font/frank_ruhl_libre_regular"
                 android:autoSizeTextType="uniform"
                 android:textColor="@color/neu_bg"
                 android:gravity="center"
@@ -99,6 +100,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/credits"
                 android:autoSizeTextType="uniform"
+                android:fontFamily="@font/frank_ruhl_libre_regular"
                 android:textColor="@color/neu_bg"
                 android:gravity="center"
                 android:layout_weight="5"/>

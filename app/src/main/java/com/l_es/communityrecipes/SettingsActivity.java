@@ -139,6 +139,7 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_settings);
         toolbar.setTitle(getResources().getString(R.string.settings));
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());

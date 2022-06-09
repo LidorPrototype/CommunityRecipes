@@ -178,6 +178,7 @@ public class RecipesActivity extends AppCompatActivity {
         String test = Utilities.getLanguageBasedCategory(category_type) + " : " + Translations.translateFromEnglishCategory(recipe_type);
         Toolbar toolbar = findViewById(R.id.toolbar_recipes);
         toolbar.setTitle(test);
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
         try {
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

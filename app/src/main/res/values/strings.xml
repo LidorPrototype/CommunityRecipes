@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CommunityRecipes</string>
-    <string name="app_title" translatable="false"><u>Community Recipes</u></string>
+    <string name="app_title" translatable="false">Community Recipes</string>
     <string name="my_name_and_id">Lidor Eliyahu Shelef, 206074437</string>
     <string name="loading_categories_error">We had some error getting the data, please restart the application</string>
     <string name="recipes_categories"><u>Recipes Categories</u></string>

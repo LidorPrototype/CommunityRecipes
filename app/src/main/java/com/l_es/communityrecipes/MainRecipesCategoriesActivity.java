@@ -164,6 +164,7 @@ public class MainRecipesCategoriesActivity extends AppCompatActivity {
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_recipes_categories);
         toolbar.setTitle(getResources().getString(R.string.recipes_categories));
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
     }
 

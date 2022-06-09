@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:autoSizeTextType="uniform"
+        android:fontFamily="@font/frank_ruhl_libre_regular"
         android:textColor="@color/neu_text_color"/>
 
 </LinearLayout>

@@ -172,6 +172,7 @@ public class IndividualRecipeActivity extends AppCompatActivity {
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_individual_recipe);
         toolbar.setTitle(recipe_name);
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());

@@ -417,6 +417,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
     public void setUniqueToolBar(){
         Toolbar toolbar = findViewById(R.id.toolbar_add_recipe);
         toolbar.setTitle(getResources().getString(R.string.submit_recipe));
+        toolbar.setTitleTextAppearance(this, R.style.ToolbarAppearance);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(v -> {

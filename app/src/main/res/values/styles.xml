@@ -10,4 +10,7 @@
     <style name="ActionOptionsMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/menu_shape</item>
     </style>
+    <style name="ToolbarAppearance">
+        <item name="android:fontFamily">@font/frank_ruhl_libre_regular</item>
+    </style>
 </resources>

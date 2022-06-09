@@ -11,6 +11,7 @@
         android:autoSizeTextType="uniform"
         android:autoSizeMinTextSize="18sp"
         android:autoSizeMaxTextSize="20sp"
+        android:fontFamily="@font/frank_ruhl_libre_medium"
         android:textColor="@color/neu_text_color"
         android:layout_marginEnd="24sp"
         android:layout_marginStart="4sp"
