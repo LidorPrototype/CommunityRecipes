@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +40,7 @@ public class RecipesActivity extends AppCompatActivity {
     private String recipe_type;
     private String category_type;
     private Context context;
+    private AppCompatButton btnNoRecipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class RecipesActivity extends AppCompatActivity {
         assignIDs();
         fillRecipesDataFireStore(category_type, recipe_type);
         setupRecyclerViews();
+
 
     }
 
@@ -95,6 +99,7 @@ public class RecipesActivity extends AppCompatActivity {
     private void assignIDs(){
         textViewError = findViewById(R.id.textViewError);
         recipesRecyclerView = findViewById(R.id.recycler_view_category_recipes);
+        btnNoRecipes = findViewById(R.id.buttonNoRecipes);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -125,7 +130,15 @@ public class RecipesActivity extends AppCompatActivity {
                         String err_msg = getResources().getString(R.string._error_) + task;
                         textViewError.setText(err_msg);
                     }
+                    if (categoryRecipesNames.size() <= 0) {
+                        setupNoRecipesScreen();
+                    }
                 });
+    }
+
+    private void setupNoRecipesScreen() {
+        findViewById(R.id.layoutNoRecipes).setVisibility(View.VISIBLE);
+        btnNoRecipes.setOnClickListener(view -> Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.l_es.communityrecipes;
+package com.l_es.communityrecipes.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,12 +8,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
+
+import com.l_es.communityrecipes.R;
+import com.l_es.communityrecipes.Utilities;
 
 /**
  * Created by Lidor on 05/22/2022.
@@ -34,7 +37,7 @@ public class NotificationsDialog extends AppCompatDialogFragment {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
     private SwitchCompat switchCompatCookReminder;
-    private Button buttonOK;
+    private AppCompatButton buttonOK;
     private boolean cookReminder;
 
     @NonNull

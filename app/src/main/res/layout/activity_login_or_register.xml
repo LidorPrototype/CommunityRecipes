@@ -46,29 +46,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="@string/login"
-        android:textColor="@color/white"
-        android:layout_marginEnd="12sp"
-        android:layout_marginStart="12sp"
+        android:textStyle="bold"
+        android:textColor="@drawable/text_color_main_button"
+        android:background="@drawable/bg_main_button"
+        android:layout_marginEnd="16sp"
+        android:layout_marginStart="16sp"
+        android:layout_marginBottom="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_register"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="@string/register"
-        android:textColor="@color/white"
+        android:textColor="@color/neu_text_color"
+        android:background="@drawable/bg_sub_button"
         android:layout_marginBottom="100sp"
-        android:layout_marginEnd="48sp"
-        android:layout_marginStart="48sp"
+        android:paddingStart="32sp"
+        android:paddingEnd="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

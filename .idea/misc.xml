@@ -15,10 +15,12 @@
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_dislike_selected.xml" value="0.1685" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_like.xml" value="0.1" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_like_selected.xml" value="0.1685" />
+        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_main_button.xml" value="0.105" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_spinner_music.xml" value="0.1" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_spinner_music_down.xml" value="0.1" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_spinner_music_dropdown.xml" value="0.1" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_spinner_music_up.xml" value="0.1625" />
+        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_sub_button.xml" value="0.1755" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/bg_switch.xml" value="0.12" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/blue_outline.xml" value="0.135" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/dialog_bg.xml" value="0.1345" />
@@ -37,13 +39,14 @@
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/sample_border2.xml" value="0.147" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/settings_24.xml" value="0.1" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/temp_image.xml" value="0.1915" />
+        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/drawable/text_color_main_button.xml" value="0.105" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_about.xml" value="0.2421875" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_add_recipe_page.xml" value="0.264" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_entrance.xml" value="0.2421875" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_individual_recipe.xml" value="0.264" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_login_or_register.xml" value="0.2421875" />
-        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_recipes.xml" value="0.2" />
+        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_login_or_register.xml" value="0.264" />
+        <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_recipes.xml" value="0.264" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_recipes_categories_main.xml" value="0.264" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Study/P.Languages/AndroidDevelopment/AndroidStudioProjects/CommunityRecipes/app/src/main/res/layout/add_recipe_ingredients_layout.xml" value="0.2" />

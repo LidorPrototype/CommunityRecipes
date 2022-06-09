@@ -35,7 +35,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "מתאבנים" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "апетайзеры" :
+                                                "Аппетайзеры" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Bakery":
@@ -53,7 +53,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ארוחת בוקר" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "завтрак" :
+                                                "Завтрак" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Desserts":
@@ -62,7 +62,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "קינוחים" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "десерты" :
+                                                "Десерты" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Dinner":
@@ -71,7 +71,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ארוחת ערב" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "ужен" :
+                                                "Ужин" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Drinks":
@@ -80,7 +80,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "משקאות" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "напитки" :
+                                                "Напитки" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Lunch":
@@ -89,7 +89,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ארוחת צהריים" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "обед" :
+                                                "Обед" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Sides":
@@ -98,7 +98,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "צדדיות" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "гарниры" :
+                                                "Гарниры" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Snacks":
@@ -107,7 +107,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "חטיפים" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "закуски" :
+                                                "Закуски" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Starters":
@@ -116,7 +116,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "מנות ראשונות" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "первае блуда" :
+                                                "Первое блюдо" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "BBQ":
@@ -125,7 +125,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "על האש" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "барбекю" :
+                                                "Барбекю" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Brunch":
@@ -134,7 +134,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "בראנץ'" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "поздний завтрак" :
+                                                "Поздний завтрак" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Casual Party":
@@ -143,7 +143,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "מסיבה" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "вечеринку" :
+                                                "Вечеринку" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Date Night":
@@ -152,7 +152,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "דייט" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "свидание" :
+                                                "Свидание" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Game Day":
@@ -161,7 +161,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "יום המשחק" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "игровой день" :
+                                                "Игровой день" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Happy Hour":
@@ -170,7 +170,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "האפי האור" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "true" :
+                                                "Счастливый час" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Special Occasion":
@@ -179,7 +179,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "אירוע מיוחד" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "особенное событие" :
+                                                "Особенное событие" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Weeknight":
@@ -188,7 +188,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "לילה רגיל" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "будний вечер" :
+                                                "Будний вечер" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "African":
@@ -197,7 +197,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "אפריקאי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "африканская" :
+                                                "Африканская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "American":
@@ -206,7 +206,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "אמריקאי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "америцанская" :
+                                                "Американская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Brazilian":
@@ -215,7 +215,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ברזילאי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "бразильская" :
+                                                "Бразильская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "British":
@@ -224,7 +224,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "בריטי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "британская" :
+                                                "Британская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Caribbean":
@@ -233,7 +233,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "קאריבי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "карибская" :
+                                                "Карибская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Chinese":
@@ -251,7 +251,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "קובני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "кубанская" :
+                                                "Кубанская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Domonican":
@@ -260,7 +260,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "דומיניקני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "доминиканская" :
+                                                "Доминиканская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Ethiopian":
@@ -269,7 +269,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "אתיופי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "эфиопская" :
+                                                "Эфиопская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Filipino":
@@ -278,7 +278,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "פיליפיני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "филиппинская" :
+                                                "Филиппинская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "French":
@@ -287,7 +287,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "צרפתי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "французская" :
+                                                "Французская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Fusion":
@@ -296,7 +296,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "משולב" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "фьюжн" :
+                                                "Фьюжн" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "German":
@@ -305,7 +305,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "גרמני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "Немецкие" :
+                                                "Немецкая" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Greek":
@@ -314,7 +314,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "יווני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "греческая" :
+                                                "Греческая" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Hawaiian":
@@ -323,7 +323,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "הוואי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "гавайская" :
+                                                "Гавайская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Indian":
@@ -332,7 +332,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "הודי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "индийская" :
+                                                "Индийская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Italian":
@@ -341,7 +341,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "איטלקי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "итальянская" :
+                                                "Итальянская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Jamaican":
@@ -350,7 +350,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ג'מייקני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "джамайканская" :
+                                                "Джамайканская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Japanese":
@@ -359,7 +359,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "יפני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "японская" :
+                                                "Японская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Korean":
@@ -368,7 +368,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "קוריאני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "корейская" :
+                                                "Корейская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Latin":
@@ -377,7 +377,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "לטיני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "латинская" :
+                                                "Латинская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Lebanese":
@@ -386,7 +386,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "לבנוני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "ливанская" :
+                                                "Ливанская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Mexican":
@@ -395,7 +395,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "מקסיקני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "мексиканская" :
+                                                "Мексиканская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Middle Eastern":
@@ -404,7 +404,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ים תיכוני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "Средиземноморском" :
+                                                "Средиземноморская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Persion":
@@ -413,7 +413,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "פרסי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "персидская" :
+                                                "Персидская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Peruvian":
@@ -422,7 +422,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "פרואני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "перуанская" :
+                                                "Перуанская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Portuguese":
@@ -440,7 +440,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "פורטו ריקני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "true" :
+                                                "Пуэрториканская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Seafood":
@@ -467,7 +467,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "טייוואני" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "тайваньская" :
+                                                "Тайваньская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Thai":
@@ -476,7 +476,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "תאילנדי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "таиландская" :
+                                                "Таиландская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Venezuelan":
@@ -494,7 +494,7 @@ public class Translations {
                                 deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
                                         "ויאטנמי" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
-                                                "вьетнамская" :
+                                                "Вьетнамская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
         }
@@ -684,142 +684,142 @@ public class Translations {
     public static String translateRussianCategory(String word){
         String translation = word;
         switch (word) {
-            case "апетайзеры":
+            case "Аппетайзеры":
                 translation = "Appetizers";
                 break;
             case "Выпечка":
                 translation = "Bakery";
                 break;
-            case "завтрак":
+            case "Завтрак":
                 translation = "Breakfast";
                 break;
-            case "десерты":
+            case "Десерты":
                 translation = "Desserts";
                 break;
-            case "ужен":
+            case "Ужин":
                 translation = "Dinner";
                 break;
-            case "напитки":
+            case "Напитки":
                 translation = "Drinks";
                 break;
-            case "обед":
+            case "Обед":
                 translation = "Lunch";
                 break;
-            case "гарниры":
+            case "Гарниры":
                 translation = "Sides";
                 break;
-            case "закуски":
+            case "Закуски":
                 translation = "Snacks";
                 break;
-            case "первае блуда":
+            case "Первое блюдо":
                 translation = "Starters";
                 break;
-            case "барбекю":
+            case "Барбекю":
                 translation = "BBQ";
                 break;
-            case "поздний завтрак":
+            case "Поздний завтрак":
                 translation = "Brunch";
                 break;
-            case "вечеринку":
+            case "Вечеринку":
                 translation = "Casual Party";
                 break;
-            case "свидание":
+            case "Свидание":
                 translation = "Date Night";
                 break;
-            case "игровой день":
+            case "Игровой день":
                 translation = "Game Day";
                 break;
-            case "האפי האור":
+            case "Счастливый час":
                 translation = "Happy Hour";
                 break;
-            case "особенное событие":
+            case "Особенное событие":
                 translation = "Special Occasion";
                 break;
-            case "будний вечер":
+            case "Будний вечер":
                 translation = "Weeknight";
                 break;
-            case "африканская":
+            case "Африканская":
                 translation = "African";
                 break;
-            case "америцанская":
+            case "Американская":
                 translation = "American";
                 break;
-            case "бразильская":
+            case "Бразильская":
                 translation = "Brazilian";
                 break;
-            case "британская":
+            case "Британская":
                 translation = "British";
                 break;
-            case "карибская":
+            case "Карибская":
                 translation = "Caribbean";
                 break;
             case "Китайская":
                 translation = "Chinese";
                 break;
-            case "кубанская":
+            case "Кубанская":
                 translation = "Cuban";
                 break;
-            case "доминиканская":
+            case "Доминиканская":
                 translation = "Domonican";
                 break;
-            case "эфиопская":
+            case "Эфиопская":
                 translation = "Ethiopian";
                 break;
-            case "филиппинская":
+            case "Филиппинская":
                 translation = "Filipino";
                 break;
-            case "французская":
+            case "Французская":
                 translation = "French";
                 break;
-            case "фьюжн":
+            case "Фьюжн":
                 translation = "Fusion";
                 break;
-            case "Немецкие":
+            case "Немецкая":
                 translation = "German";
                 break;
-            case "греческая":
+            case "Греческая":
                 translation = "Greek";
                 break;
-            case "гавайская":
+            case "Гавайская":
                 translation = "Hawaiian";
                 break;
-            case "индийская":
+            case "Индийская":
                 translation = "Indian";
                 break;
-            case "итальянская":
+            case "Итальянская":
                 translation = "Italian";
                 break;
-            case "джамайканская":
+            case "Джамайканская":
                 translation = "Jamaican";
                 break;
-            case "японская":
+            case "Японская":
                 translation = "Japanese";
                 break;
-            case "корейская":
+            case "Корейская":
                 translation = "Korean";
                 break;
-            case "латинская":
+            case "Латинская":
                 translation = "Latin";
                 break;
-            case "ливанская":
+            case "Ливанская":
                 translation = "Lebanese";
                 break;
-            case "мексиканская":
+            case "Мексиканская":
                 translation = "Mexican";
                 break;
-            case "Среднеземноморском":
+            case "Средиземноморская":
                 translation = "Middle Eastern";
                 break;
-            case "персидская":
+            case "Персидская":
                 translation = "Persion";
                 break;
-            case "перуанская":
+            case "Перуанская":
                 translation = "Peruvian";
                 break;
             case "Португальская":
                 translation = "Portuguese";
                 break;
-            case "פורטו ריקני":
+            case "Пуэрториканская":
                 translation = "Puerto Rican";
                 break;
             case "Морепродукты":
@@ -828,16 +828,16 @@ public class Translations {
             case "Шведская":
                 translation = "Swedish";
                 break;
-            case "тайваньская":
+            case "Тайваньская":
                 translation = "Taiwanese";
                 break;
-            case "таиландская":
+            case "Таиландская":
                 translation = "Thai";
                 break;
             case "Венесуэльская":
                 translation = "Venezuelan";
                 break;
-            case "вьетнамская":
+            case "Вьетнамская":
                 translation = "Vietnamese";
                 break;
         }

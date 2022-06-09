@@ -21,14 +21,17 @@
             android:layout_margin="12sp"
             />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_credits_dialog_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/got_it"
+            android:textColor="@drawable/text_color_main_button"
+            android:background="@drawable/bg_main_button"
             android:layout_gravity="end"
             android:layout_marginStart="24sp"
             android:layout_marginEnd="24sp"
+            android:layout_marginBottom="12sp"
             android:textAllCaps="false"/>
 
     </LinearLayout>

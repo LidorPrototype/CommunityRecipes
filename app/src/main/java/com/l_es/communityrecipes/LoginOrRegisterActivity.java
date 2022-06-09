@@ -2,11 +2,11 @@ package com.l_es.communityrecipes;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class LoginOrRegisterActivity extends AppCompatActivity {
 
-    private Button buttonLogin, buttonRegister;
+    private AppCompatButton buttonLogin, buttonRegister;
     private TextView textViewEmail, textViewPassword;
     private String email, password;
     private FirebaseAuth mAuth;

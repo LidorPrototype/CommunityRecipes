@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,7 +69,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
     private String selected_category_type, general_recipe_type = "";
     private EditText editTextAddPreparation;
     private Button buttonEnterPreparation;
-    private Button buttonLoginOrRegister;
+    private AppCompatButton buttonLoginOrRegister;
     private FirebaseFirestore db;
     private FirebaseStorage storage;
     private StorageReference storageRef;

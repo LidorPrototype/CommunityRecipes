@@ -90,4 +90,6 @@
     <string name="logout">Logout</string>
     <string name="rate_updated">Rates Updated !</string>
     <string name="rate_update_fail">Update Failed, Please try again later.</string>
+    <string name="no_recipe_text">No Recipes For This Category Yet!</string>
+    <string name="no_recipe_button_text">Add The First Recipe!</string>
 </resources>

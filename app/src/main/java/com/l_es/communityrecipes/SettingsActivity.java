@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.l_es.communityrecipes.Adapters.LVSettingsAdapter;
 import com.l_es.communityrecipes.Dialogs.CreditsDialog;
 import com.l_es.communityrecipes.Dialogs.MusicConfigDialog;
+import com.l_es.communityrecipes.Dialogs.NotificationsDialog;
 import com.l_es.communityrecipes.Services.SoundService;
 
 import java.util.ArrayList;
