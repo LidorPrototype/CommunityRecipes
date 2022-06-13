@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CommunityRecipes</string>
-    <string name="my_name_and_id">לידור אליהו שלף, 206074437</string>
+    <string name="my_name_and_id">לידור אליהו שלף, 123456789</string>
     <string name="loading_categories_error">נתקלנו בכמה בעיות בקבלת המידע, אנא הפעילו את האפליקצייה מחדש</string>
     <string name="recipes_categories"><u>קטגוריות של מתכונים</u></string>
     <string name="submit_recipe"><u>הגשת מתכון</u></string>
