@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class EntranceActivity extends AppCompatActivity {
+public class EntranceSplashActivity extends AppCompatActivity {
 
     private Context context;
     private TextView textViewError;
@@ -32,6 +32,7 @@ public class EntranceActivity extends AppCompatActivity {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private SharedPreferences prefs;
     private boolean notifications_status;
+    private final int counterTime = 5000;
 
     @Override
     protected void onStop() {
@@ -137,7 +138,7 @@ public class EntranceActivity extends AppCompatActivity {
     }
 
     private CountDownTimer setTimerToNextActivity() {
-        return new CountDownTimer(5000, 1000) {
+        return new CountDownTimer(counterTime, 1000) {
             public void onTick(long millisUntilFinished) { /* No Need */ }
             public void onFinish() {
                 if (category_cuisine.size() != 0 && category_meal.size() != 0 &&
@@ -151,7 +152,7 @@ public class EntranceActivity extends AppCompatActivity {
                     editor.putStringSet(Utilities.CATEGORY_OCCASION, new HashSet<>(category_occasion));
                     editor.apply();
                     // Move to the next activity
-                    Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_FADE, true);
+                    Utilities.useBungee(context, MainActivityRecipesCategories.class, Utilities.ANIMATION_FADE, true);
                     finish();
                 }
                 else {

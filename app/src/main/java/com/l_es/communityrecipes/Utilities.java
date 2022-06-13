@@ -44,6 +44,7 @@ public class Utilities {
     public static final String LOG_FLAG                     =   "LOG_TESTING_HERE";
     public static final String NULL                         =   "NULL";
     protected static final String IMAGES_PATH               =   "Recipes/";
+    public static final int PASSWORD_LENGTH                 =   6;
     protected static final int REQUEST_IMAGE_CAPTURE        =   1;
     private static final int errorInt                       =   -99999;
     // SharedPreferences Flags

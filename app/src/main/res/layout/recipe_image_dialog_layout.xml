@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:minHeight="300sp"
-    android:minWidth="250sp"
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0sp"
     app:cardCornerRadius="32sp"
@@ -21,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:shapeAppearanceOverlay="@style/roundedCornersImageView"
-            android:minWidth="250sp"
-            android:minHeight="300sp"
+            android:maxWidth="250sp"
+            android:maxHeight="500sp"
+            android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/l_es" />
 

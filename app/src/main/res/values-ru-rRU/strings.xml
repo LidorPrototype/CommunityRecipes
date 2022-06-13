@@ -50,7 +50,7 @@
     <string name="exit">Выход</string>
     <string name="pay_us">Сначала заплатите, дорогой пользователь ;)</string>
     <string name="login_fail_msg">Что то пошло не так, повторите попытку позже…</string>
-    <string name="login_already_logged_in_msg">Вы уже авторизовались !</string>
+    <string name="login_logged_in_msg">Вы авторизовались !</string>
     <string name="authentication_failed">Аутентификация провалена.</string>
     <string name="email_in_use_msg">Электронный адрес уже используется, введите другой…</string>
     <string name="recipe_image_load_fail_msg">Неудалось просмотреть изображение рецепта, повторите попытку позже ;)</string>
@@ -67,4 +67,21 @@
     <string name="rate_updated">Рейтинги обновлены !</string>
     <string name="rate_update_fail">Обновление неудалось, повторите попытку позже.</string>
     <string name="my_name_and_id">Lidor Eliyahu Shelef, 206074437</string>
+    <string name="enter">Ввод</string>
+    <string name="enter_preparation">Введите способ приготовления</string>
+    <string name="recipe_time">Время приготовления</string>
+    <string name="name">Имя</string>
+    <string name="featured_recipe">Рекомендуемый Рецепт</string>
+    <string name="name_semicolon">Имя:</string>
+    <string name="signed_out">Выход выполнен</string>
+    <string name="logout">Выйти</string>
+    <string name="no_recipe_text">В этой категории рецептов нету !</string>
+    <string name="no_recipe_button_text">Добавить первый рецепт !</string>
+    <string name="discard">Отмена</string>
+    <string name="about">О нас</string>
+    <string name="email_exception">Чтобы продолжить пожалуйста установите приложение электронной почты!</string>
+    <string name="validation_warning_preparations">Добавте способ приготовления</string>
+    <string name="get_featured">Рекомендуемые</string>
+    <string name="email_not_valid">Электронная почта недействительна!</string>
+    <string name="password_length_error">" Пароль должен содержать не менее 6 символов!"</string>
 </resources>

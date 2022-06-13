@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +37,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class ImageDialog extends AppCompatDialogFragment {
 
+    private static final int MAX_HEIGHT = 500;
     private ImageDialogListener listener;
     private ShapeableImageView recipeImageView;
     private AppCompatButton buttonRetakePhoto, buttonGoodPhoto;
@@ -74,6 +76,15 @@ public class ImageDialog extends AppCompatDialogFragment {
 
         Dialog dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        int dialogWidth = lp.width;
+        int dialogHeight = lp.height;
+
+        if(dialogHeight > MAX_HEIGHT) {
+            dialog.getWindow().setLayout(dialogWidth,MAX_HEIGHT);
+        }
 
         return dialog;
     }

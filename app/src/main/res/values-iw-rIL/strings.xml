@@ -60,7 +60,7 @@
     <string name="signed_out">התנתקות בוצעה</string>
     <string name="email_exception">לא נמצא אפליקציית אימייל על מכשיר זה !</string>
     <string name="login_fail_msg">משהו נכשל, אנא נסה שוב מאוחר יותר...</string>
-    <string name="login_already_logged_in_msg">ההתחברות כבר התבצעה !</string>
+    <string name="login_logged_in_msg">ההתחברות התבצעה !</string>
     <string name="authentication_failed">האימות נכשל.</string>
     <string name="email_in_use_msg">האימייל כבר בשימוש, אנא נסו בשנית...</string>
     <string name="recipe_image_load_fail_msg">לא הצלחנו לקרוא את תמונת המתכון, אנא נסו שוב מאוחר יותר ;)</string>
@@ -80,4 +80,8 @@
     <string name="logout">להתנתק</string>
     <string name="rate_updated">דירוג עודכן !</string>
     <string name="rate_update_fail">דירוג נכשל, אנא נסו שנית מאוחר יותר.</string>
+    <string name="no_recipe_text">אין עדיין מתכונים לקטגוריה הזו!</string>
+    <string name="no_recipe_button_text">"הוסף את המתכון הראשון! "</string>
+    <string name="email_not_valid">אימייל לא תקין!</string>
+    <string name="password_length_error">אורך הסיסמא חייב להיות לפחות 6 תווים!</string>
 </resources>

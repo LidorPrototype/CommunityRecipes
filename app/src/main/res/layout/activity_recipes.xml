@@ -48,6 +48,7 @@
             android:layout_height="50sp"
             android:text="@string/no_recipe_text"
             android:gravity="center"
+            android:textColor="@color/neu_text_color"
             android:lines="1"
             android:fontFamily="@font/frank_ruhl_libre_black"
             android:autoSizeTextType="uniform"

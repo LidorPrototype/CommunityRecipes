@@ -1,13 +1,18 @@
 package com.l_es.communityrecipes;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +42,10 @@ import com.l_es.communityrecipes.Adapters.RVAddRecipePreparationAdapter;
 import com.l_es.communityrecipes.Dialogs.ImageDialog;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -65,7 +74,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
     private static List<String> category_cuisine = new ArrayList<>();
     private static List<String> category_meal = new ArrayList<>();
     private static List<String> category_occasion = new ArrayList<>();
-    private static final List<String> categories = new ArrayList<>();
+    private static List<String> categories = new ArrayList<>();
     private String selected_category_type, general_recipe_type = "";
     private EditText editTextAddPreparation;
     private Button buttonEnterPreparation;
@@ -80,6 +89,8 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
     private RVAddRecipeIngredientsAdapter rvAddRecipeIngredientsAdapter;
     private RVAddRecipePreparationAdapter rvAddRecipePreparationAdapter;
     private LinearLayoutManager linearLayoutManagerIngredients, linearLayoutManagerPreparations;
+
+    private Uri outputFileUri;
 
 
     @Override
@@ -159,6 +170,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         category_meal = new ArrayList<>(prefs.getStringSet(Utilities.CATEGORY_MEAL, new HashSet<>()));
         category_occasion = new ArrayList<>(prefs.getStringSet(Utilities.CATEGORY_OCCASION, new HashSet<>()));
         List<String> categories_raw = new ArrayList<>();
+        categories = new ArrayList<>();
         categories_raw.addAll(category_cuisine);
         categories_raw.addAll(category_meal);
         categories_raw.addAll(category_occasion);
@@ -194,8 +206,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         }else if(recipe_ingredients_names.size() == 0){
             return getResources().getString(R.string.validation_warning_ingredients);
         }else if(imageBitmap == null){
-            BitmapDrawable drawableRecipeImage = (BitmapDrawable) imageViewRecipeImage.getDrawable();
-            imageBitmap = drawableRecipeImage.getBitmap();
+            imageBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.general_food);
         }
         return "";
     }
@@ -247,25 +258,103 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
         numberPickerMinutes.setMaxValue(59);
     }
 
-    @SuppressWarnings("deprecation")
     private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File outputFile = null;
         try {
-            startActivityForResult(takePictureIntent, Utilities.REQUEST_IMAGE_CAPTURE);
-        } catch (ActivityNotFoundException e) {
-            // display error state to the user
+            outputFile = File.createTempFile("tmp", ".jpg", getCacheDir());
+        } catch (IOException pE) {
+            pE.printStackTrace();
         }
+        outputFileUri = Uri.fromFile(outputFile);
+
+        // Camera.
+        final List<Intent> cameraIntents = new ArrayList<Intent>();
+        final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        final PackageManager packageManager = getPackageManager();
+        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
+        for(ResolveInfo res : listCam) {
+            final String packageName = res.activityInfo.packageName;
+            final Intent intent = new Intent(captureIntent);
+            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+            intent.setPackage(packageName);
+            cameraIntents.add(intent);
+        }
+
+        // Filesystem.
+        final Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_PICK);
+
+        // Chooser of filesystem options.
+        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
+
+        // Add the camera options.
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[cameraIntents.size()]));
+
+        startActivityForResult(chooserIntent, 42);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Utilities.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            imageBitmap = (Bitmap) extras.get("data");
-            imageViewRecipeImage.setImageBitmap(imageBitmap);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 42) {
+                Bitmap bmp = null;
+                if (data.hasExtra("data")) {
+                    Bundle extras = data.getExtras();
+                    bmp = (Bitmap) extras.get("data");
+                } else {
+                    AssetFileDescriptor fd = null;
+                    try {
+                        fd = getContentResolver().openAssetFileDescriptor(data.getData(), "r");
+                    } catch (FileNotFoundException pE) {
+                        pE.printStackTrace();
+                    }
+                    bmp = BitmapFactory.decodeFileDescriptor(fd.getFileDescriptor());
+                }
+                try {
+                    FileOutputStream out = new FileOutputStream(new File(outputFileUri.getPath()));
+                    bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                loadFacePicture(outputFileUri);
+            }
         }
     }
+
+    private void loadFacePicture(Uri outputFileUri){
+        try {
+            imageBitmap = (Bitmap) MediaStore.Images.Media.getBitmap(this.getContentResolver(), outputFileUri);
+        } catch (IOException e) {
+            imageBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.general_food);
+        }
+        imageViewRecipeImage.setImageBitmap(imageBitmap);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @SuppressWarnings("UnnecessaryReturnStatement")
     private void setupOnClicks() {
@@ -276,8 +365,12 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
             if(preparation.length() == 0){
                 return;
             }else{
-                editTextAddPreparation.setText("");
-                addPreparation(preparation);
+                if (recipe_preparation_items.contains(preparation)){
+                    Toast.makeText(context, "This preparation is already added.", Toast.LENGTH_SHORT).show();
+                }else{
+                    editTextAddPreparation.setText("");
+                    addPreparation(preparation);
+                }
             }
         });
         buttonEnterIngredient.setOnClickListener(view -> {
@@ -286,9 +379,13 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
             if(ingredient_name.length() == 0 || ingredient_amount.length() == 0){
                 return;
             }else{
-                editTextIngredientName.setText("");
-                editTextIngredientAmount.setText("");
-                addIngredient(ingredient_name, ingredient_amount);
+                if (recipe_ingredients_names.contains(ingredient_name)){
+                    Toast.makeText(context, "This ingredient is already added.", Toast.LENGTH_SHORT).show();
+                }else{
+                    editTextIngredientName.setText("");
+                    editTextIngredientAmount.setText("");
+                    addIngredient(ingredient_name, ingredient_amount);
+                }
             }
         });
         discardButton.setOnClickListener(view -> onBackPressed());
@@ -397,7 +494,7 @@ public class AddRecipePageActivity extends AppCompatActivity implements ImageDia
                 .set(recipe_data)
                 .addOnSuccessListener(aVoid -> {
                     resetAllFields();
-                    Utilities.useBungee(context, MainRecipesCategoriesActivity.class, Utilities.ANIMATION_ZOOM, true);
+                    Utilities.useBungee(context, MainActivityRecipesCategories.class, Utilities.ANIMATION_ZOOM, true);
                     finish();
                 })
                 .addOnFailureListener(e -> Toast.makeText(AddRecipePageActivity.this, getResources().getString(R.string.recipe_creation_failed), Toast.LENGTH_SHORT).show());

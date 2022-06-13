@@ -47,15 +47,32 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
 
     private void setupOnClicks() {
         buttonLogin.setOnClickListener(view -> {
-            email = textViewEmail.getText().toString();
-            password = textViewPassword.getText().toString();
+            getCredentials();
             signInUser(email, password);
         });
         buttonRegister.setOnClickListener(view -> {
-            email = textViewEmail.getText().toString();
-            password = textViewPassword.getText().toString();
-            createNewUser(email, password);
+            getCredentials();
+            if(checkCredentials()) {
+                createNewUser(email, password);
+            }
         });
+    }
+
+    private boolean checkCredentials() {
+        if (email.split("@")[1].contains(email.split("@")[1])){
+            Toast.makeText(this, getResources().getString(R.string.email_not_valid), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (password.length() < Utilities.PASSWORD_LENGTH){
+            Toast.makeText(this, getResources().getString(R.string.password_length_error), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private void getCredentials() {
+        email = textViewEmail.getText().toString();
+        password = textViewPassword.getText().toString();
     }
 
     private void createNewUser(String email_, String password_) {
@@ -100,7 +117,7 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
         if (user_ == null){
             Toast.makeText(this, getResources().getString(R.string.login_fail_msg), Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, getResources().getString(R.string.login_already_logged_in_msg), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.login_logged_in_msg), Toast.LENGTH_SHORT).show();
             onBackPressed();
         }
     }

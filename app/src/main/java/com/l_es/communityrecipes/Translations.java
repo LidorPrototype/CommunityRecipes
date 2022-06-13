@@ -25,6 +25,23 @@ public class Translations {
         return word;
     }
 
+    public static String translateToEnglishCategory(String word){
+        String translation = word;
+        String deviceLanguage = Utilities.getDeviceLanguage();
+        switch (deviceLanguage) {
+            case Utilities.LANGUAGE_HEBREW:
+                translation = translateHebrewCategory(word);
+                break;
+            case Utilities.LANGUAGE_RUSSIAN:
+                translation = translateRussianCategory(word);
+                break;
+            case Utilities.LANGUAGE_ENGLISH:
+                translation = translateFromEnglishCategory(word);
+                break;
+        }
+        return translation;
+    }
+
     public static String translateFromEnglishCategory(String word){
         String translation = word;
         String deviceLanguage = Utilities.getDeviceLanguage();
@@ -90,6 +107,15 @@ public class Translations {
                                         "ארוחת צהריים" :
                                         deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
                                                 "Обед" :
+                                                Utilities.UNSUPPORTED_LANGUAGE;
+                break;
+            case "Salads":
+                translation =
+                        deviceLanguage.equals(Utilities.LANGUAGE_ENGLISH) ? word :
+                                deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
+                                        "סלטים" :
+                                        deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
+                                                "Салаты" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
             case "Sides":
@@ -335,6 +361,15 @@ public class Translations {
                                                 "Индийская" :
                                                 Utilities.UNSUPPORTED_LANGUAGE;
                 break;
+            case "Israeli":
+                translation =
+                        deviceLanguage.equals(Utilities.LANGUAGE_ENGLISH) ? word :
+                                deviceLanguage.equals(Utilities.LANGUAGE_HEBREW) ?
+                                        "ישראלי" :
+                                        deviceLanguage.equals(Utilities.LANGUAGE_RUSSIAN) ?
+                                                "Израильская" :
+                                                Utilities.UNSUPPORTED_LANGUAGE;
+                break;
             case "Italian":
                 translation =
                         deviceLanguage.equals(Utilities.LANGUAGE_ENGLISH) ? word :
@@ -501,23 +536,6 @@ public class Translations {
         return translation;
     }
 
-    public static String translateToEnglishCategory(String word){
-        String translation = word;
-        String deviceLanguage = Utilities.getDeviceLanguage();
-        switch (deviceLanguage) {
-            case Utilities.LANGUAGE_HEBREW:
-                translation = translateHebrewCategory(word);
-                break;
-            case Utilities.LANGUAGE_RUSSIAN:
-                translation = translateRussianCategory(word);
-                break;
-            case Utilities.LANGUAGE_ENGLISH:
-                translation = translateFromEnglishCategory(word);
-                break;
-        }
-        return translation;
-    }
-
     public static String translateHebrewCategory(String word){
         String translation = word;
         switch (word) {
@@ -541,6 +559,9 @@ public class Translations {
                 break;
             case "ארוחת צהריים":
                 translation = "Lunch";
+                break;
+            case "סלטים":
+                translation = "Salads";
                 break;
             case "צדדיות":
                 translation = "Sides";
@@ -622,6 +643,9 @@ public class Translations {
                 break;
             case "הודי":
                 translation = "Indian";
+                break;
+            case "ישראלי":
+                translation = "Israeli";
                 break;
             case "איטלקי":
                 translation = "Italian";
@@ -705,6 +729,9 @@ public class Translations {
             case "Обед":
                 translation = "Lunch";
                 break;
+            case "Салаты":
+                translation = "Salads";
+                break;
             case "Гарниры":
                 translation = "Sides";
                 break;
@@ -785,6 +812,9 @@ public class Translations {
                 break;
             case "Индийская":
                 translation = "Indian";
+                break;
+            case "Израильская":
+                translation = "Israeli";
                 break;
             case "Итальянская":
                 translation = "Italian";

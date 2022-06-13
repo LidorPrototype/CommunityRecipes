@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class MainRecipesCategoriesActivity extends AppCompatActivity {
+public class MainActivityRecipesCategories extends AppCompatActivity {
 
     private static List<String> category_cuisine = new ArrayList<>();
     private static List<String> category_meal = new ArrayList<>();

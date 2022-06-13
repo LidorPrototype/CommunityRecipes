@@ -68,22 +68,20 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
 
     private void setupSettingsList() {
         settings_icons = new ArrayList<>();
-        settings_icons.add(R.drawable.feature);
         settings_icons.add(R.drawable.notifications_24);
         settings_icons.add(R.drawable.add_24);
         settings_icons.add(R.drawable.rate_24);
         settings_icons.add(R.drawable.expand);
         settings_icons.add(R.drawable.logout);
         settings_names = new ArrayList<>();
-        settings_names.add(getResources().getString(R.string.get_featured));         //  0
-        settings_names.add(getResources().getString(R.string.notifications));        //  1
-        settings_names.add(getResources().getString(R.string.add_a_recipe));         //  2
-        settings_names.add(getResources().getString(R.string.rate_us));              //  3
-        settings_names.add(getResources().getString(R.string.check_other_apps));     //  4
+        settings_names.add(getResources().getString(R.string.notifications));        //  0
+        settings_names.add(getResources().getString(R.string.add_a_recipe));         //  1
+        settings_names.add(getResources().getString(R.string.rate_us));              //  2
+        settings_names.add(getResources().getString(R.string.check_other_apps));     //  3
         if (user != null) {
-            settings_names.add(getResources().getString(R.string.logout));           //  5
+            settings_names.add(getResources().getString(R.string.logout));           //  4
         }else{
-            settings_names.add(getResources().getString(R.string.login));            //  5
+            settings_names.add(getResources().getString(R.string.login));            //  4
         }
         lvSettingsAdapter = new LVSettingsAdapter(this, settings_icons, settings_names);
         listViewSettings.setAdapter(lvSettingsAdapter);
@@ -92,31 +90,27 @@ public class SettingsActivity extends AppCompatActivity implements MusicConfigDi
     private void setupOnClicks() {
         listViewSettings.setOnItemClickListener((adapterView, view, position, l) -> {
             switch (position){
-                case 0: // Get Featured
-                    Toast.makeText(SettingsActivity.this, getResources().getString(R.string.pay_us), Toast.LENGTH_SHORT).show();
-                    sendEmail();
-                    break;
-                case 1: // Notifications
+                case 0: // Notifications
                     NotificationsDialog notificationsDialog = new NotificationsDialog();
                     notificationsDialog.show(getSupportFragmentManager(), "notifications config dialog");
                     break;
-                case 2: // Add A Recipe
+                case 1: // Add A Recipe
                     Utilities.useBungee(context, AddRecipePageActivity.class, Utilities.ANIMATION_ZOOM, true);
                     finish();
                     break;
-                case 3: // Rate Us
+                case 2: // Rate Us
                     break;
-                case 4: // Check Other Apps
+                case 3: // Check Other Apps
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse("https://play.google.com/store/apps/dev?id=6589420104492859272"));
                     startActivity(intent);
                     finish();
                     break;
-                case 5:
+                case 4:
                     if (user != null){
                         FirebaseAuth.getInstance().signOut();
                         Toast.makeText(context, getResources().getString(R.string.signed_out), Toast.LENGTH_SHORT).show();
-                        Intent intent_signed_out = new Intent(SettingsActivity.this, MainRecipesCategoriesActivity.class);
+                        Intent intent_signed_out = new Intent(SettingsActivity.this, MainActivityRecipesCategories.class);
                         startActivity(intent_signed_out);
                     }else{
                         Utilities.useBungee(context, LoginOrRegisterActivity.class, Utilities.ANIMATION_SLIDE_LEFT, true);

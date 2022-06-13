@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 
-import com.l_es.communityrecipes.EntranceActivity;
+import com.l_es.communityrecipes.EntranceSplashActivity;
 import com.l_es.communityrecipes.R;
 import com.l_es.communityrecipes.Utilities;
 
@@ -40,7 +40,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     @SuppressLint("ObsoleteSdkInt")
     void showNotification(Context context) {
         NotificationCompat.Builder mBuilder;
-        Intent notificationIntent = new Intent(context, EntranceActivity.class);
+        Intent notificationIntent = new Intent(context, EntranceSplashActivity.class);
         Bundle bundle = new Bundle();
         notificationIntent.putExtras(bundle);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
